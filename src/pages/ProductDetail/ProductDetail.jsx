@@ -12,10 +12,9 @@ const ProductDetail = () => {
   return (
     <>
       {/* <Nav /> */}
-      <h1>제품 상세 페이지</h1>
       <div className="productInfo">
         <div className="productDetailAll">
-          <div className="poductImages">
+          <div className="productImages">
             <ProductImages />
           </div>
           <div className="productDetail">
