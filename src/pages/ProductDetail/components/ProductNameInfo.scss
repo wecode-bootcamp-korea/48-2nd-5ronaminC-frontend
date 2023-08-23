@@ -1,0 +1,15 @@
+@import '/src/style/variables.scss';
+
+.ProductNameInfo {
+  width: 454px;
+  height: 556px;
+  position: sticky;
+  top: 0;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  .dk {
+    position: sticky;
+    top: 10px;
+  }
+}
