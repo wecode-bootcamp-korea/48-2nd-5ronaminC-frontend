@@ -14,11 +14,15 @@ const ProductDetail = () => {
       {/* <Nav /> */}
       <h1>제품 상세 페이지</h1>
       <div className="productInfo">
-        <div className="productDetailInfo">
-          <ProductImages />
-          <ProductDetailInfo />
-          <ProductReview />
-          <ProductQnA />
+        <div className="productDetailAll">
+          <div className="poductImages">
+            <ProductImages />
+          </div>
+          <div className="productDetail">
+            <ProductDetailInfo />
+            <ProductReview />
+            <ProductQnA />
+          </div>
         </div>
         <div className="productName">
           <ProductNameInfo />

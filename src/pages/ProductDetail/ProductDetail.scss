@@ -5,16 +5,24 @@
 .productInfo {
   display: flex;
 
-  .productDetailInfo {
+  .productDetailAll {
     display: flex;
     width: 70%;
     height: 100%;
     background-color: black;
-  }
 
+    .poductImages {
+      display: flex;
+      height: 70%;
+    }
+    .productDetail {
+      display: flex;
+    }
+  }
   .productName {
     display: flex;
     width: 30%;
+    height: 100vh;
     background-color: yellow;
   }
 }
