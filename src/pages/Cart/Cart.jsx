@@ -2,7 +2,7 @@ import React from 'react';
 //import Nav from '../../components/Nav/Nav';
 // import Footer from '../../components/Footer/Footer';
 // import CartList from './components/cartList';
-import ProductPriceAll from './components/productPriceAll';
+import ProductPriceAll from './components/ProductPriceAll';
 import './Cart.scss';
 
 const Cart = () => {

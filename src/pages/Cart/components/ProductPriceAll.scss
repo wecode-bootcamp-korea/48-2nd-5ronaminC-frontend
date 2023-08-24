@@ -1,0 +1,15 @@
+@import '/src/style/variables.scss';
+
+.productPriceInfo {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: red;
+  color: white;
+  font-size: 2rem;
+
+  .dk {
+    position: sticky;
+    top: 10px;
+  }
+}
