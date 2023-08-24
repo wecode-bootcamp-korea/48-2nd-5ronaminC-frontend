@@ -1,0 +1,119 @@
+@import '/src/style/variables.scss';
+@import '/src/pages/Login/Font.scss';
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.left {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $blue;
+  flex: 40%;
+  color: white;
+  padding: 2rem 5rem;
+
+  .logo {
+    width: 100%;
+  }
+
+  .title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    gap: 10px;
+
+    h1 {
+      color: $yellow;
+      @include titleText;
+    }
+
+    p {
+      @include bodyText;
+    }
+  }
+
+  .info {
+    font-size: 0.75rem;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    div:first-child {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 60%;
+
+  .userInput {
+    min-width: 490px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 5rem;
+    flex-basis: 70%;
+    gap: 16px;
+
+    .email,
+    .password {
+      display: flex;
+      flex-direction: column;
+
+      .inputWrap {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        height: 3rem;
+        padding: 14px 17px;
+
+        border-radius: 0.5rem;
+        border: 1px solid $gray;
+        outline-style: none;
+
+        &:focus {
+          border: 1px solid $deeplBlue;
+        }
+      }
+
+      .showPasswordIcon {
+        height: 20px;
+      }
+    }
+
+    label {
+      color: $superDeepGray;
+      @include bodyText;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      outline-style: none;
+
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .buttonWrap {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+  }
+}
