@@ -1,5 +1,6 @@
 import React from 'react';
 //import Nav from '../../components/Nav/Nav';
+//import Footer from '../../components/Footer/Footer';
 import ProductImages from './components/ProductImages';
 import ProductDetailInfo from './components/ProductDetailInfo';
 import ProductReview from './components/ProductReview';
@@ -27,6 +28,7 @@ const ProductDetail = () => {
           <ProductNameInfo />
         </div>
       </div>
+      {/* <Footer /> */}
     </>
   );
 };
