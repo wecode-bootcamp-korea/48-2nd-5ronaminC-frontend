@@ -1,0 +1,23 @@
+.cart {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1920px;
+  height: 100vh;
+
+  .cartAll {
+    display: flex;
+    width: 70%;
+    background-color: black;
+
+    .cartList {
+      display: flex;
+    }
+  }
+
+  .productPrice {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: yellow;
+  }
+}
