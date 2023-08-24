@@ -12,4 +12,8 @@
 
 #root {
   min-width: 556px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 }
