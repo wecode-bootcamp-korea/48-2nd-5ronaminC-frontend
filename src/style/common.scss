@@ -11,10 +11,9 @@
 }
 
 #root {
-  width: 100vw;
   min-width: 556px;
-  height: 100vh;
+}
 
-  display: flex;
-  flex-direction: column;
+button {
+  cursor: pointer;
 }
