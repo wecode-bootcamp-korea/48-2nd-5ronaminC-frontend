@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.scss';
-import Button from './Button';
+import Button from './components/Button';
 
 const Login = () => {
   return (
