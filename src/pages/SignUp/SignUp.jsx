@@ -1,10 +1,12 @@
-import React from 'react';
-import './SignUp.scss';
-import Button from './Button';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from './components/Button/Button';
+import Input from './components/Input/Input';
+import './SignUp.scss';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const isPassword = true;
 
   return (
     <div className="main">
@@ -43,25 +45,101 @@ const SignUp = () => {
       </div>
       <div className="right">
         <form className="userInput">
-          <div className="email">
-            <label>이메일</label>
-            <div className="inputWrap">
-              <input type="text" />
-            </div>
+          <Input
+            className="email"
+            title="이메일"
+            type="text"
+            placeholder="5KEA@naver.com"
+            maxLength="30"
+          />
+          <Input
+            className="password"
+            title="비밀번호"
+            type="password"
+            placeholder="소문자,대문자,특수기호 포함 8자리 이상"
+            maxLength="30"
+            isPassword={isPassword}
+          />
+          <Input
+            className="name"
+            title="이름"
+            type="text"
+            placeholder="오케아"
+          />
+          <Input
+            className="birthday"
+            title="생년월일"
+            type="text"
+            placeholder="20230513"
+            maxlength="8"
+          />
+          <Input
+            className="phoneNumber"
+            title="전화번호"
+            type="number"
+            placeholder="01012345678"
+            maxlength="11"
+          />
+
+          <div className="gender wrap">
+            <label>성별</label>
+            <ul className="radioWrap">
+              <li>
+                <input type="radio" name="gender" />
+                <label>남자</label>
+              </li>
+              <li>
+                <input type="radio" name="gender" />
+                <label>여자</label>
+              </li>
+              <li>
+                <input type="radio" name="gender" />
+                <label>응답안함</label>
+              </li>
+            </ul>
           </div>
-          <div className="password">
-            <label>비밀번호</label>
-            <div className="inputWrap">
-              <input className="input" type="password" />
-              <img
-                className="showPasswordIcon"
-                src="/images/hide.png"
-                alt="비밀번호 보이기"
-              />
-            </div>
+
+          <Input
+            className="address"
+            title="우편번호"
+            type="number"
+            placeholder="00000(5자리)"
+            maxlength="5"
+          />
+          <Input className="detailAddress" title="상세주소" type="text" />
+          <div className="marketFavor wrap">
+            <label>선호매장</label>
+            <ul className="radioWrap">
+              <li>
+                <input type="radio" name="gender" />
+                <label>광명점</label>
+              </li>
+              <li>
+                <input type="radio" name="gender" />
+                <label>고양점</label>
+              </li>
+              <li>
+                <input type="radio" name="gender" />
+                <label>기흥점</label>
+              </li>
+              <li>
+                <input type="radio" name="gender" />
+                <label>동부산</label>
+              </li>
+              <li>
+                <input type="radio" name="gender" />
+                <label>선택안함</label>
+              </li>
+            </ul>
           </div>
-          <div className="buttonWrap">
-            <Button name="회원가입 완료" style="blue" />
+
+          <div className="buttonWrap wrap">
+            <Button
+              name="회원가입 완료"
+              style="blue"
+              goToLink="/main"
+              navigate={navigate}
+            />
           </div>
         </form>
       </div>

@@ -1,6 +1,12 @@
 @import '/src/style/variables.scss';
 @import '/src/pages/SignUp/Font.scss';
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .main {
   width: 100vw;
   height: 100vh;
@@ -67,7 +73,6 @@
   display: flex;
   overflow: auto;
   flex: 60% 1;
-  justify-content: center;
   align-items: flex-start;
 
   .userInput {
@@ -79,8 +84,31 @@
     flex-basis: 70%;
     gap: 16px;
 
-    .email,
-    .password {
+    .gender,
+    .marketFavor {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .radioWrap {
+      width: 100%;
+      align-items: center;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      li {
+        display: flex;
+        gap: 0.25rem;
+      }
+
+      input {
+        width: 0.9rem;
+        height: 0.9rem;
+        margin-right: 0.1rem;
+      }
+    }
+
+    .wrap {
       display: flex;
       flex-direction: column;
 
@@ -102,6 +130,10 @@
 
         .input {
           margin-right: 0.5rem;
+        }
+
+        input::placeholder {
+          color: $lightGray;
         }
       }
 
