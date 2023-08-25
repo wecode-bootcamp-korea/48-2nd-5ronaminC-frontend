@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 import Radio from './components/Radio/Radio';
-import {
-  INPUT_GENDER_DATA,
-  INPUT_MARKETFAVOR_DATA,
-  INPUT_COMPOSITION_FRIST_DATA,
-} from './InputData';
+import { INPUT_RADIO_DATA, INPUT_GUIDE_DATA } from './InputData';
 
 import './SignUp.scss';
 
@@ -51,7 +47,7 @@ const SignUp = () => {
       </div>
       <div className="right">
         <form className="userInput">
-          {INPUT_COMPOSITION_FRIST_DATA.map(el => (
+          {INPUT_GUIDE_DATA.first.map(el => (
             <Input
               key={el.id}
               className={el.className}
@@ -65,11 +61,22 @@ const SignUp = () => {
           <div className="gender wrap">
             <label>성별</label>
             <ul className="radioWrap">
-              {INPUT_GENDER_DATA.map(el => (
+              {INPUT_RADIO_DATA.gender.map(el => (
                 <Radio key={el.id} name={el.name} title={el.title} />
               ))}
             </ul>
           </div>
+
+          {INPUT_GUIDE_DATA.second.map(el => (
+            <Input
+              key={el.id}
+              className={el.className}
+              title={el.title}
+              type={el.type}
+              placeholder={el.placeholder}
+              maxLength={el.maxLength}
+            />
+          ))}
 
           <Input
             className="address"
@@ -88,7 +95,7 @@ const SignUp = () => {
           <div className="marketFavor wrap">
             <label>선호매장</label>
             <ul className="radioWrap">
-              {INPUT_MARKETFAVOR_DATA.map(el => (
+              {INPUT_RADIO_DATA.marketFavor.map(el => (
                 <Radio key={el.id} name={el.name} title={el.title} />
               ))}
             </ul>
