@@ -1,8 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.scss';
-import Button from './components/Button';
+import Button from './components/Button/Button';
+import Input from './components/Input/Input';
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const goToMain = () => {
+    navigate('/main');
+  };
+  const goToSignUp = () => {
+    navigate('/signup');
+  };
+
   return (
     <div className="main">
       <div className="left">
@@ -34,26 +45,11 @@ const Login = () => {
       </div>
       <div className="right">
         <form className="userInput">
-          <div className="email">
-            <label>이메일</label>
-            <div className="inputWrap">
-              <input type="text" />
-            </div>
-          </div>
-          <div className="password">
-            <label>비밀번호</label>
-            <div className="inputWrap">
-              <input type="password" />
-              <img
-                className="showPasswordIcon"
-                src="/images/hide.png"
-                alt="비밀번호 보이기"
-              />
-            </div>
-          </div>
+          <Input className="email" title="이메일" type="text" />
+          <Input className="password" title="비밀번호" type="password" />
           <div className="buttonWrap">
-            <Button name="로그인" style="blue" />
-            <Button name="회원가입" style="white" />
+            <Button name="로그인" style="blue" linkFunction={goToMain} />
+            <Button name="회원가입" style="white" linkFunction={goToSignUp} />
           </div>
         </form>
       </div>
