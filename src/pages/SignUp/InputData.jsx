@@ -60,9 +60,6 @@ const INPUT_GUIDE_DATA = {
       placeholder: '01012345678',
       maxLength: '11',
     },
-  ],
-
-  second: [
     {
       id: 6,
       className: 'address',

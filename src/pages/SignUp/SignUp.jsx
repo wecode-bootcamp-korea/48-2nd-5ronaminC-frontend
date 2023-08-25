@@ -47,50 +47,27 @@ const SignUp = () => {
       </div>
       <div className="right">
         <form className="userInput">
-          {INPUT_GUIDE_DATA.first.map(el => (
-            <Input
-              key={el.id}
-              className={el.className}
-              title={el.title}
-              type={el.type}
-              placeholder={el.placeholder}
-              maxLength={el.maxLength}
-            />
+          {INPUT_GUIDE_DATA.first.map((el, idx) => (
+            <React.Fragment key={el.id}>
+              <Input
+                className={el.className}
+                title={el.title}
+                type={el.type}
+                placeholder={el.placeholder}
+                maxLength={el.maxLength}
+              />
+              {idx === 4 && (
+                <div className="gender wrap">
+                  <label>성별</label>
+                  <ul className="radioWrap">
+                    {INPUT_RADIO_DATA.gender.map(el => (
+                      <Radio key={el.id} name={el.name} title={el.title} />
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </React.Fragment>
           ))}
-
-          <div className="gender wrap">
-            <label>성별</label>
-            <ul className="radioWrap">
-              {INPUT_RADIO_DATA.gender.map(el => (
-                <Radio key={el.id} name={el.name} title={el.title} />
-              ))}
-            </ul>
-          </div>
-
-          {INPUT_GUIDE_DATA.second.map(el => (
-            <Input
-              key={el.id}
-              className={el.className}
-              title={el.title}
-              type={el.type}
-              placeholder={el.placeholder}
-              maxLength={el.maxLength}
-            />
-          ))}
-
-          <Input
-            className="address"
-            title="우편번호"
-            type="number"
-            placeholder="00000(5자리)"
-            maxlength="5"
-          />
-          <Input
-            className="detailAddress"
-            title="상세주소"
-            type="text"
-            placeholder="이케아아파트 101동 101호"
-          />
 
           <div className="marketFavor wrap">
             <label>선호매장</label>
