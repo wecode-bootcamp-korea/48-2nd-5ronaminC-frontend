@@ -78,7 +78,12 @@ const SignUp = () => {
             placeholder="00000(5자리)"
             maxlength="5"
           />
-          <Input className="detailAddress" title="상세주소" type="text" />
+          <Input
+            className="detailAddress"
+            title="상세주소"
+            type="text"
+            placeholder="이케아아파트 101동 101호"
+          />
 
           <div className="marketFavor wrap">
             <label>선호매장</label>
