@@ -14,6 +14,11 @@
   background-color: $blue;
   color: white;
 
+  &:disabled {
+    background-color: rgb(226, 226, 226);
+    color: $lightGray;
+  }
+
   @include buttonText;
 }
 

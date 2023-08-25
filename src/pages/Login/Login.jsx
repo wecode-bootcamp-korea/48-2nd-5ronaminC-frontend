@@ -1,18 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 
 const Login = () => {
+  const [userInfo, setUserInfo] = useState({
+    userId: '',
+    userPw: '',
+  });
+
   const navigate = useNavigate();
 
-  const goToMain = () => {
-    navigate('/main');
+  // const goToMain = () => {
+  //   // navigate('/main');
+  //   if (validation) {
+  //     navigate('/main');
+  //   } else {
+  //     alert('입력한 값을 확인해주세요!');
+  //   }
+  // };
+
+  const goToMain = e => {
+    e.preventDefault();
+
+    fetch('http://10.58.52.136:3000/users/signin', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: userInfo.userId,
+        password: userInfo.userPw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.accessToken) {
+          localStorage.setItem('TOKEN', result.accessToken);
+          alert('로그인 성공');
+          navigate('/main');
+
+          return;
+        }
+        if (result.message === 'INVALID_ID"') {
+          alert('존재하지 않는 유저입니다.');
+        } else if (result.message === 'INVALID_PASSWORD') {
+          alert('비밀번호가 틀렸습니다.');
+        }
+      });
   };
+
   const goToSignUp = () => {
     navigate('/signup');
   };
+
+  const saveUserInfo = event => {
+    const { value, name } = event.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
+  const validation =
+    userInfo.userId.includes('@') && userInfo.userPw.length >= 8;
 
   return (
     <div className="main">
@@ -45,11 +94,32 @@ const Login = () => {
       </div>
       <div className="right">
         <form className="userInput">
-          <Input className="email" title="이메일" type="text" />
-          <Input className="password" title="비밀번호" type="password" />
+          <Input
+            name="userId"
+            className="email"
+            title="이메일"
+            type="text"
+            getFunction={saveUserInfo}
+          />
+          <Input
+            name="userPw"
+            className="password"
+            title="비밀번호"
+            type="password"
+            getFunction={saveUserInfo}
+          />
           <div className="buttonWrap">
-            <Button name="로그인" style="blue" linkFunction={goToMain} />
-            <Button name="회원가입" style="white" linkFunction={goToSignUp} />
+            <Button
+              name="로그인"
+              buttonStyle="blue"
+              linkFunction={goToMain}
+              validation={validation}
+            />
+            <Button
+              name="회원가입"
+              buttonStyle="white"
+              linkFunction={goToSignUp}
+            />
           </div>
         </form>
       </div>

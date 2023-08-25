@@ -1,12 +1,26 @@
 import React from 'react';
 import './Input.scss';
 
-const Input = ({ className, title, type, placeholder, maxLength }) => {
+const Input = ({
+  className,
+  name,
+  title,
+  type,
+  placeholder,
+  maxLength,
+  getFunction,
+}) => {
   return (
     <div className={`${className} wrap`}>
       <label>{title}</label>
       <div className="inputWrap">
-        <input type={type} placeholder={placeholder} maxlength={maxLength} />
+        <input
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          maxlength={maxLength}
+          onChange={getFunction}
+        />
         {type === 'password' && (
           <img
             className="showPasswordIcon"

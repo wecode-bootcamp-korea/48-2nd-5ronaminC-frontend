@@ -1,9 +1,13 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({ name, style, linkFunction }) => {
+const Button = ({ name, buttonStyle, linkFunction, validation = true }) => {
   return (
-    <button className={`buttonComponent ${style}`} onClick={linkFunction}>
+    <button
+      className={`buttonComponent ${buttonStyle}`}
+      onClick={linkFunction}
+      disabled={!validation}
+    >
       {name}
     </button>
   );
