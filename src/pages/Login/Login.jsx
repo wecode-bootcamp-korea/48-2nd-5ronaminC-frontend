@@ -99,6 +99,7 @@ const Login = () => {
             className="email"
             title="이메일"
             type="text"
+            placeholder="@을 포함한 이메일을 입력해주세요"
             getFunction={saveUserInfo}
           />
           <Input
@@ -106,6 +107,7 @@ const Login = () => {
             className="password"
             title="비밀번호"
             type="password"
+            placeholder="8자리 이상 입력해주세요"
             getFunction={saveUserInfo}
           />
           <div className="buttonWrap">
