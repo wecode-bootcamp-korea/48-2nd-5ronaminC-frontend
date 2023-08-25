@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
+import Radio from './components/Radio/Radio';
 import './SignUp.scss';
 
 const SignUp = () => {
@@ -84,18 +85,9 @@ const SignUp = () => {
           <div className="gender wrap">
             <label>성별</label>
             <ul className="radioWrap">
-              <li>
-                <input type="radio" name="gender" />
-                <label>남자</label>
-              </li>
-              <li>
-                <input type="radio" name="gender" />
-                <label>여자</label>
-              </li>
-              <li>
-                <input type="radio" name="gender" />
-                <label>응답안함</label>
-              </li>
+              <Radio name="gender" title="남자" />
+              <Radio name="gender" title="여자" />
+              <Radio name="gender" title="응답안함" />
             </ul>
           </div>
 
@@ -107,36 +99,22 @@ const SignUp = () => {
             maxlength="5"
           />
           <Input className="detailAddress" title="상세주소" type="text" />
+
           <div className="marketFavor wrap">
             <label>선호매장</label>
             <ul className="radioWrap">
-              <li>
-                <input type="radio" name="gender" />
-                <label>광명점</label>
-              </li>
-              <li>
-                <input type="radio" name="gender" />
-                <label>고양점</label>
-              </li>
-              <li>
-                <input type="radio" name="gender" />
-                <label>기흥점</label>
-              </li>
-              <li>
-                <input type="radio" name="gender" />
-                <label>동부산</label>
-              </li>
-              <li>
-                <input type="radio" name="gender" />
-                <label>선택안함</label>
-              </li>
+              <Radio name="market" title="광명점" />
+              <Radio name="market" title="고양점" />
+              <Radio name="market" title="기흥점" />
+              <Radio name="market" title="동부산" />
+              <Radio name="market" title="선택안함" />
             </ul>
           </div>
 
           <div className="buttonWrap wrap">
             <Button
               name="회원가입 완료"
-              style="blue"
+              buttonStyle="blue"
               goToLink="/main"
               navigate={navigate}
             />
