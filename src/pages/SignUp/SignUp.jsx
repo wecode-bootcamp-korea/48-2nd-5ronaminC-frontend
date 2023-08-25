@@ -3,13 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 import Radio from './components/Radio/Radio';
-import { INPUT_RADIO_DATA } from './InputData';
+import {
+  INPUT_GENDER_DATA,
+  INPUT_MARKETFAVOR_DATA,
+  INPUT_COMPOSITION_FRIST_DATA,
+} from './InputData';
 
 import './SignUp.scss';
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const isPassword = true;
 
   return (
     <div className="main">
@@ -48,48 +51,23 @@ const SignUp = () => {
       </div>
       <div className="right">
         <form className="userInput">
-          <Input
-            className="email"
-            title="이메일"
-            type="text"
-            placeholder="5KEA@naver.com"
-            maxLength="30"
-          />
-          <Input
-            className="password"
-            title="비밀번호"
-            type="password"
-            placeholder="소문자,대문자,특수기호 포함 8자리 이상"
-            maxLength="30"
-            isPassword={isPassword}
-          />
-          <Input
-            className="name"
-            title="이름"
-            type="text"
-            placeholder="오케아"
-          />
-          <Input
-            className="birthday"
-            title="생년월일"
-            type="text"
-            placeholder="20230513"
-            maxlength="8"
-          />
-          <Input
-            className="phoneNumber"
-            title="전화번호"
-            type="number"
-            placeholder="01012345678"
-            maxlength="11"
-          />
+          {INPUT_COMPOSITION_FRIST_DATA.map(el => (
+            <Input
+              key={el.id}
+              className={el.className}
+              title={el.title}
+              type={el.type}
+              placeholder={el.placeholder}
+              maxLength={el.maxLength}
+            />
+          ))}
 
           <div className="gender wrap">
             <label>성별</label>
             <ul className="radioWrap">
-              <Radio name="gender" title="남자" />
-              <Radio name="gender" title="여자" />
-              <Radio name="gender" title="응답안함" />
+              {INPUT_GENDER_DATA.map(el => (
+                <Radio key={el.id} name={el.name} title={el.title} />
+              ))}
             </ul>
           </div>
 
@@ -105,11 +83,9 @@ const SignUp = () => {
           <div className="marketFavor wrap">
             <label>선호매장</label>
             <ul className="radioWrap">
-              <Radio name="market" title="광명점" />
-              <Radio name="market" title="고양점" />
-              <Radio name="market" title="기흥점" />
-              <Radio name="market" title="동부산" />
-              <Radio name="market" title="선택안함" />
+              {INPUT_MARKETFAVOR_DATA.map(el => (
+                <Radio key={el.id} name={el.name} title={el.title} />
+              ))}
             </ul>
           </div>
 
@@ -118,7 +94,7 @@ const SignUp = () => {
               name="회원가입 완료"
               buttonStyle="blue"
               goToLink="/main"
-              navigate={navigate}
+              goFunction={navigate}
             />
           </div>
         </form>

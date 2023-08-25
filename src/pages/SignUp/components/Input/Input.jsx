@@ -1,21 +1,13 @@
 import React from 'react';
 import './Input.scss';
 
-const Input = ({
-  className,
-  title,
-  type,
-  placeholder,
-  maxLength,
-  isPassword,
-}) => {
-  const isHaveIcon = Boolean(isPassword);
+const Input = ({ className, title, type, placeholder, maxLength }) => {
   return (
     <div className={`${className} wrap`}>
       <label>{title}</label>
       <div className="inputWrap">
         <input type={type} placeholder={placeholder} maxlength={maxLength} />
-        {isHaveIcon && (
+        {type === 'password' && (
           <img
             className="showPasswordIcon"
             src="/images/hide.png"
