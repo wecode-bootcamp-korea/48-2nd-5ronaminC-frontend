@@ -124,12 +124,12 @@ input::-webkit-inner-spin-button {
         border: 1px solid $gray;
         outline-style: none;
 
-        &:focus {
-          border: 1px solid $deeplBlue;
-        }
-
         .input {
           margin-right: 0.5rem;
+
+          &:focus {
+            border: 1px solid $deeplBlue;
+          }
         }
 
         input::placeholder {
