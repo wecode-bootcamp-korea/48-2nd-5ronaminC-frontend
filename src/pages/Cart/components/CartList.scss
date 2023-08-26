@@ -1,0 +1,137 @@
+@import '/src/style/variables.scss';
+
+.cartListAll {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .cartListRow {
+    display: flex;
+    margin-top: 5%;
+    border-bottom: 1px solid lightGray;
+
+    .cartImg {
+      width: 30%;
+
+      img {
+        width: 8.75rem;
+        height: 8.75rem;
+      }
+    }
+
+    .cartListInfo {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+
+      .cartListDelete {
+        button {
+          float: right;
+          border: 0;
+          background-color: transparent;
+
+          img {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+      }
+
+      .cartListProductName {
+        color: $black;
+        font-weight: 600;
+        font-size: 1rem;
+        padding-bottom: 2%;
+      }
+
+      .cartlistInfoDetail {
+        display: flex;
+        font-size: 0.8rem;
+        color: $superDeepGray;
+        padding-bottom: 2%;
+
+        .cartListProducDetail {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .cartListProducLength {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+
+      .productlistQuantity {
+        p {
+          font-size: 0.8rem;
+          color: $superDeepGray;
+          padding-bottom: 5%;
+        }
+      }
+
+      .productlistInfoBottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-bottom: 5%;
+
+        .productlistPrice {
+          display: flex;
+          align-items: baseline;
+
+          .productlistMoney {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $black;
+          }
+
+          .productlistUnit {
+            margin-left: 5%;
+            font-size: 0.8rem;
+            color: $superDeepGray;
+          }
+        }
+
+        .productlistButton {
+          display: flex;
+          align-items: baseline;
+
+          .productlistHeart {
+            display: flex;
+
+            button {
+              border: 0;
+              background-color: transparent;
+              margin-left: -50%;
+
+              img {
+                width: 1rem;
+                height: 1rem;
+                transform: translateY(20%);
+              }
+            }
+          }
+
+          .productlistDirect {
+            display: flex;
+
+            button {
+              border: 0;
+              background-color: transparent;
+              border-radius: 0.5rem;
+              background-color: $blue;
+
+              p {
+                margin: 0.5rem;
+                display: inline-block;
+                font-size: 0.875rem;
+                font-weight: 700;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

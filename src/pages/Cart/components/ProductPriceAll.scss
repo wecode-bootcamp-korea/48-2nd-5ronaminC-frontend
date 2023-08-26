@@ -4,12 +4,92 @@
   position: sticky;
   width: 100%;
   top: 0;
-  background-color: red;
   color: white;
   font-size: 2rem;
+  background-color: antiquewhite;
 
-  .dk {
+  .productPriceInfoSticky {
     position: sticky;
     top: 10px;
+
+    .productPriceInfoName {
+      margin-bottom: 5%;
+
+      h2 {
+        color: $superDeepGray;
+        font-size: 1rem;
+        line-height: 1.45;
+        letter-spacing: -0.0042em;
+        border-bottom: 1px solid $lightGray;
+      }
+    }
+
+    .productPriceInfoDetail {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5%;
+      border-bottom: 2px solid $black;
+
+      .productPriceInfoQuantity {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        p {
+          display: inline-block;
+          font-size: 0.8rem;
+          line-height: 1.571;
+          color: $superDeepGray;
+        }
+
+        .InfoQuantityRight {
+          .InfoQuantityCount {
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .productPriceInfoAmount {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        p {
+          display: inline-block;
+          font-size: 0.8rem;
+          line-height: 1.571;
+          color: $superDeepGray;
+        }
+
+        .InfoAmountRight {
+          .InfoAmountCount {
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .productPriceInfoDelivery {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 5%;
+
+        p {
+          display: inline-block;
+          font-size: 0.8rem;
+          line-height: 1.571;
+          color: $superDeepGray;
+        }
+
+        .InfoDeliveryRight {
+          .InfoDeliveryCount {
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
   }
 }
