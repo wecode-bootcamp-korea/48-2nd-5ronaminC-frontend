@@ -26,10 +26,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="productPrice">
-          <div></div>
-          <div className="productPriceAll">
-            <ProductPriceAll />
-          </div>
+          <ProductPriceAll />
         </div>
       </div>
       {/* <Footer /> */}
