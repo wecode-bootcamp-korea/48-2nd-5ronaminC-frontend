@@ -1,0 +1,57 @@
+@import '/src/style/variables.scss';
+
+.addressCheck {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top: 7%;
+  border-bottom: 1px solid lightGray;
+
+  .addressCheckList {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    .addressCheckContent {
+      width: 100%;
+      margin-top: 2rem;
+
+      .addressInfo {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $superDeepGray;
+        margin-bottom: 2rem;
+
+        .addressTitle {
+          margin-bottom: 1rem;
+        }
+
+        .addressNumName {
+          display: inline-block;
+          font-size: 0.8rem;
+          margin-right: 5%;
+          margin-bottom: 0.5rem;
+        }
+
+        .addressNum {
+          display: inline-block;
+          font-size: 0.8rem;
+          color: $black;
+        }
+
+        .addressName {
+          display: inline-block;
+          margin-right: 5%;
+        }
+
+        .address {
+          display: inline-block;
+          font-size: 0.8rem;
+          color: $black;
+        }
+      }
+    }
+  }
+}

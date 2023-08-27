@@ -3,7 +3,7 @@ import './PaymentProductPrice.scss';
 
 const PaymentProductPrice = () => {
   return (
-    <div className="PaymentProductPrice">
+    <div className="productPrice">
       <div className="productPriceInfoName">
         <h2>주문 내역</h2>
       </div>

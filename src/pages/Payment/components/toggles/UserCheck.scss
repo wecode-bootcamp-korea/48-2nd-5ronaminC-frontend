@@ -1,0 +1,80 @@
+@import '/src/style/variables.scss';
+
+.userCheck {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top: 7%;
+  border-bottom: 1px solid lightGray;
+
+  .userCheckList {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    .userCheckListContent {
+      width: 100%;
+      margin-top: 2rem;
+
+      .userCheckToggleName {
+        margin-bottom: 2rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $superDeepGray;
+
+        .userCheckTitle {
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          display: inline-block;
+          margin-right: 5%;
+        }
+
+        .user {
+          font-size: 1rem;
+          font-weight: 600;
+          color: $black;
+          margin-right: 2%;
+        }
+      }
+
+      .contanctInfo {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $superDeepGray;
+        margin-bottom: 2rem;
+
+        .contact {
+          margin-bottom: 0.5rem;
+        }
+
+        .phoneNumName {
+          display: inline-block;
+          font-size: 0.8rem;
+          margin-right: 5%;
+          margin-bottom: 0.5rem;
+        }
+
+        .phoneNum {
+          display: inline-block;
+          font-size: 0.8rem;
+          color: $black;
+        }
+
+        .emailName {
+          display: inline-block;
+          margin-right: 5%;
+        }
+
+        .email {
+          display: inline-block;
+          font-size: 0.8rem;
+          color: $black;
+        }
+      }
+    }
+  }
+}

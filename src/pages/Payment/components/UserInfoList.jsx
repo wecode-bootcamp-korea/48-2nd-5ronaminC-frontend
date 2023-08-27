@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CartListCheck from './toggles/CartListCheck';
+import UserCheck from './toggles/UserCheck';
+import AddressCheck from './toggles/AddressCheck';
 import './UserInfoList.scss';
 
 const UserInfoList = () => {
+  const [isProductCheck, setProductCheck] = useState(false);
+  const [isUserCheck, setUserCheck] = useState(false);
+  const [isAddressCheck, setAddressCheck] = useState(false);
+
   return (
     <div className="userInfoList">
       <div className="userInfoListProductCheck">
@@ -9,31 +16,79 @@ const UserInfoList = () => {
           <p>01. 주문상품 확인</p>
         </div>
         <div className="productCheckToggle">
-          <button>
-            <img src="images/down-chevron.png" alt="세부정보 토글 버튼" />
+          <button
+            onClick={() => {
+              setProductCheck(e => !e);
+            }}
+          >
+            {isProductCheck ? (
+              <img src="images/chevron.png" alt="세부정보 up 토글 버튼" />
+            ) : (
+              <img
+                src="images/down-chevron.png"
+                alt="세부정보 down 토글 버튼"
+              />
+            )}
           </button>
         </div>
       </div>
+      {isProductCheck && (
+        <div className="cartListCheck">
+          <CartListCheck />
+        </div>
+      )}
       <div className="userInfoCheck">
         <div className="userInfoCheckName">
           <p>02. 주문자 정보</p>
         </div>
         <div className="userInfoCheckToggle">
-          <button>
-            <img src="images/down-chevron.png" alt="세부정보 토글 버튼" />
+          <button
+            onClick={() => {
+              setUserCheck(e => !e);
+            }}
+          >
+            {isUserCheck ? (
+              <img src="images/chevron.png" alt="세부정보 up 토글 버튼" />
+            ) : (
+              <img
+                src="images/down-chevron.png"
+                alt="세부정보 down 토글 버튼"
+              />
+            )}
           </button>
         </div>
       </div>
+      {isUserCheck && (
+        <div className="userCheck">
+          <UserCheck />
+        </div>
+      )}
       <div className="userInfoAddressCheck">
         <div className="addressCheckName">
           <p>03. 배송지 정보</p>
         </div>
         <div className="addressCheckToggle">
-          <button>
-            <img src="images/down-chevron.png" alt="세부정보 토글 버튼" />
+          <button
+            onClick={() => {
+              setAddressCheck(e => !e);
+            }}
+          >
+            {isAddressCheck ? (
+              <img src="images/chevron.png" alt="세부정보 up 토글 버튼" />
+            ) : (
+              <img
+                src="images/down-chevron.png"
+                alt="세부정보 down 토글 버튼"
+              />
+            )}
           </button>
         </div>
       </div>
+      {isAddressCheck && (
+        <div className="addressCheck">
+          <AddressCheck />
+        </div>
+      )}
       <div className="userInfoPointCheck">
         <div className="pointCheckName">
           <p>04. 포인트 결제</p>

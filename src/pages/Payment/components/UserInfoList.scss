@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 5rem;
 
   .userInfoListProductCheck {
     display: flex;
@@ -36,6 +37,10 @@
         }
       }
     }
+  }
+  .cartListCheck {
+    display: flex;
+    width: 100%;
   }
 
   .userInfoCheck {
@@ -71,6 +76,11 @@
     }
   }
 
+  .userCheck {
+    display: flex;
+    width: 100%;
+  }
+
   .userInfoAddressCheck {
     display: flex;
     width: 100%;
@@ -102,6 +112,11 @@
         }
       }
     }
+  }
+
+  .addressCheck {
+    display: flex;
+    width: 100%;
   }
 
   .userInfoPointCheck {
