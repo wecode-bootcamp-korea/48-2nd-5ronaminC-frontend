@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import Nav from '../../components/Nav/Nav';
 //import Footer from '../../components/Footer/Footer';
+import ProductDetailInfo from './components/toggles/ProductDetailInfo';
+import ProductReview from './components/toggles/ProductReview';
 import ProductImages from './components/ProductImages';
-//import ProductDetailInfo from './components/ProductDetailInfo';
-//import ProductReview from './components/ProductReview';
-//import ProductQnA from './components/ProductQnA';
 import ProductNameInfo from './components/ProductNameInfo';
 
 import './ProductDetail.scss';
 
 const ProductDetail = () => {
+  const [isProductDetailInfo, setProductDetailInfo] = useState(false);
+  const [isProductReview, setProductReview] = useState(false);
+
   return (
     <>
       {/* <Nav /> */}
@@ -19,20 +21,38 @@ const ProductDetail = () => {
             <ProductImages />
           </div>
           <div className="productDetail">
-            <button className="productDetailInfo">
+            <button
+              className="productDetailInfo"
+              onClick={() => {
+                setProductDetailInfo(e => !e);
+              }}
+            >
               <div className="productInfoName">
                 <p>제품 설명</p>
               </div>
               <div className="productInfoNameImg">
-                <img src="images/next.png" alt="제품 설명 버튼" />
+                {isProductDetailInfo ? (
+                  <img src="images/back.png" alt="제품 설명 back 토글 버튼" />
+                ) : (
+                  <img src="images/next.png" alt="제품 설명 토글 버튼" />
+                )}
               </div>
             </button>
-            <button className="productReview">
+            <button
+              className="productReview"
+              onClick={() => {
+                setProductReview(e => !e);
+              }}
+            >
               <div className="productReviewName">
                 <p>상품평</p>
               </div>
               <div className="productReviewNameImg">
-                <img src="images/next.png" alt="상품평 버튼" />
+                {isProductReview ? (
+                  <img src="images/back.png" alt="상품평 back 토글 버튼" />
+                ) : (
+                  <img src="images/next.png" alt="상품평 토글 버튼" />
+                )}
               </div>
             </button>
             <button className="productQnA">
@@ -46,7 +66,12 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className="productNames">
-          <ProductNameInfo />
+          {isProductDetailInfo || isProductReview ? (
+            (isProductDetailInfo && <ProductDetailInfo />) ||
+            (isProductReview && <ProductReview />)
+          ) : (
+            <ProductNameInfo />
+          )}
         </div>
       </div>
       {/* <Footer /> */}

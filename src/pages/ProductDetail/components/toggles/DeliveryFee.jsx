@@ -1,11 +1,11 @@
 import React from 'react';
-import './ProductQnA.scss';
+import './DeliveryFee.scss';
 
-const ProducQnA = () => {
+const DeliveryFee = () => {
   return (
     <div className="">
       <div></div>
     </div>
   );
 };
-export default ProducQnA;
+export default DeliveryFee;

@@ -4,7 +4,7 @@ import './ProductReview.scss';
 const ProductReview = () => {
   return (
     <div className="">
-      <div></div>
+      <div>Review</div>
     </div>
   );
 };
