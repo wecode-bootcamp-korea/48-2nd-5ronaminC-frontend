@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import DeliveryFee from './toggles/DeliveryFee';
 import './ProductNameInfo.scss';
 
 const ProductNameInfo = () => {
-  const [isDeliveryFee, setDeliveryFee] = useState(false);
-
   return (
     <div className="productNameInfo">
       <div className="productNew">New</div>
@@ -41,13 +38,7 @@ const ProductNameInfo = () => {
         <div className="productDeliveryFee">
           <img src="images/delivery-truck.png" alt="배송 아이콘" />
           <p>배송비 : 10만원 이상 무료</p>
-          <button
-            onClick={() => {
-              setDeliveryFee(e => !e);
-            }}
-          >
-            자세히
-          </button>
+          <button>자세히</button>
         </div>
         <div className="productShopInfo">
           <img src="images/shop.png" alt="매장 아이콘" />
