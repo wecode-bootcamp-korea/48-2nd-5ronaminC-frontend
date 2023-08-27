@@ -1,0 +1,220 @@
+@import '/src/style/variables.scss';
+
+.userInfoList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .userInfoListProductCheck {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    margin-top: 5%;
+    border-bottom: 1px solid lightGray;
+
+    .productCheckName {
+      display: flex;
+      width: 80%;
+
+      p {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: $black;
+        font-weight: 600;
+      }
+    }
+
+    .productCheckToggle {
+      button {
+        border: 0;
+        background-color: transparent;
+
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .userInfoCheck {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    margin-top: 4%;
+    border-bottom: 1px solid lightGray;
+
+    .userInfoCheckName {
+      display: flex;
+      width: 80%;
+
+      p {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: $black;
+        font-weight: 600;
+      }
+    }
+
+    .userInfoCheckToggle {
+      button {
+        border: 0;
+        background-color: transparent;
+
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .userInfoAddressCheck {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    margin-top: 4%;
+    border-bottom: 1px solid lightGray;
+
+    .addressCheckName {
+      display: flex;
+      width: 80%;
+
+      p {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: $black;
+        font-weight: 600;
+      }
+    }
+
+    .addressCheckToggle {
+      button {
+        border: 0;
+        background-color: transparent;
+
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .userInfoPointCheck {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    margin-top: 4%;
+    border-bottom: 1px solid lightGray;
+
+    .pointCheckName {
+      p {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: $black;
+        font-weight: 600;
+      }
+
+      img {
+        width: 1.4rem;
+        height: 1.4rem;
+        transform: translateY(20%);
+        margin-left: 2%;
+      }
+    }
+
+    .pointCheckToggle {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5%;
+      width: 100%;
+
+      .pointCheck {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        .pointCheckList {
+          width: 100%;
+
+          p {
+            display: inline-block;
+          }
+
+          .pointCheckToggleName {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: $superDeepGray;
+            margin-right: 5%;
+          }
+
+          .point {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $blue;
+            margin-right: 2%;
+          }
+
+          .pointUnit {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: $superDeepGray;
+          }
+        }
+
+        .goToCart {
+          display: flex;
+
+          button {
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            margin-top: 5%;
+
+            img {
+              width: 0.8rem;
+              height: 0.8rem;
+              margin-right: 0.4rem;
+            }
+
+            p {
+              display: inline-block;
+              font-size: 0.7rem;
+              font-weight: 600;
+              color: $superDeepGray;
+            }
+          }
+        }
+      }
+
+      .orderButton {
+        button {
+          padding: 0 5rem;
+          border: 0;
+          border-radius: 0.3rem;
+          background-color: $blue;
+          min-height: 3.5rem;
+
+          img {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.4rem;
+            transform: translateY(10%);
+          }
+
+          p {
+            display: inline-block;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
