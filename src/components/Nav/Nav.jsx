@@ -1,6 +1,7 @@
 import React from 'react';
-import './Nav.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { NAV_DATA } from './NavData';
+import './Nav.scss';
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -64,9 +65,9 @@ const Nav = () => {
 
       <div className="secondLine">
         <ul className="categories">
-          <li>모든제품</li>
-          <li>공간별 쇼룸</li>
-          <li>서비스</li>
+          {NAV_DATA.category.map(li => (
+            <li key={li.id}>{li.title}</li>
+          ))}
         </ul>
         <div className="userFavorMarket">
           <img

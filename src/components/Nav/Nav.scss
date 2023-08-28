@@ -31,6 +31,10 @@
       gap: 1rem;
       margin-left: 2rem;
 
+      li {
+        cursor: pointer;
+      }
+
       img {
         width: 1.5rem;
         height: 1.5rem;
@@ -81,12 +85,14 @@
     .categories {
       display: flex;
       gap: 1.5rem;
+      cursor: pointer;
       @include categoryText;
     }
 
     .userFavorMarket {
       display: flex;
       gap: 0.5rem;
+      cursor: pointer;
 
       img {
         width: 1.5rem;
