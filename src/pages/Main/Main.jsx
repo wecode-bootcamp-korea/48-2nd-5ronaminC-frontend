@@ -1,9 +1,8 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
 import './Main.scss';
 
 const Main = () => {
-  return <Nav />;
+  return <>나는 메인</>;
 };
 
 export default Main;
