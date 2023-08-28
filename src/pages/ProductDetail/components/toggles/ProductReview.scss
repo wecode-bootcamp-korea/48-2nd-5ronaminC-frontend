@@ -32,6 +32,10 @@
         margin: 1rem 3rem;
       }
     }
+
+    button:disabled {
+      background: $superDeepGray;
+    }
   }
 
   .poductReviewWrite {

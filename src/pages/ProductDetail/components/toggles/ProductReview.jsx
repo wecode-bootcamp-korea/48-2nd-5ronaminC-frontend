@@ -3,6 +3,33 @@ import './ProductReview.scss';
 
 const ProductReview = () => {
   const [isPoductReview, setPoductReview] = useState(false);
+  const [newReview, setNewReviewPost] = useState({ content: '' });
+
+  const newReviewInput = event => {
+    const { value, id } = event.target;
+    setNewReviewPost({ ...newReview, [id]: value });
+    console.log({ [id]: value });
+  };
+
+  const reviewValidation = newReview.content.trim() === '' ? true : false;
+
+  //상품평 작성 통신
+  const reviewWrite = () => {
+    fetch('API', {
+      method: 'Post',
+      headers: {
+        authorization: '',
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        content: newReview.content,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
+  };
 
   return (
     <div className="productReview ">
@@ -14,7 +41,7 @@ const ProductReview = () => {
         }}
       >
         {isPoductReview ? (
-          <button type="submit">
+          <button disabled={reviewValidation} onClick={reviewWrite}>
             <p>상품평 제출</p>
           </button>
         ) : (
@@ -35,6 +62,8 @@ const ProductReview = () => {
               rows="10"
               maxlength="999"
               placeholder="상품평을 작성해주세요."
+              onChange={newReviewInput}
+              id="content"
             />
           </div>
         </div>
