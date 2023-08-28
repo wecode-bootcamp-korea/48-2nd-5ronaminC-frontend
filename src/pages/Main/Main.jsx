@@ -15,8 +15,8 @@ const Main = () => {
         <div className="imageContainer">
           <img src="" alt="" />
         </div>
-        <div className="listContainer">
-          <ul>
+        <div className="listWireframe">
+          <ul className="listContainer">
             <li />
             <li />
             <li />
