@@ -1,11 +1,21 @@
 import React from 'react';
 import './Nav.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   const { pathname } = useLocation();
   const EXCEPTION_PATH = ['/login', '/sign-up'];
   const isExceptionPath = EXCEPTION_PATH.some(path => path === pathname);
+
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    navigate('/login');
+  };
+
+  const goToMain = () => {
+    navigate('/main');
+  };
 
   return (
     <div className="nav">
@@ -14,6 +24,7 @@ const Nav = () => {
           className="logo"
           src="https://www.ikea.com/kr/ko/static/ikea-logo.f7d9229f806b59ec64cb.svg"
           alt="5KEA"
+          onClick={goToMain}
         />
         <div className="searchBar">
           <img
@@ -45,6 +56,7 @@ const Nav = () => {
             <img
               src={`${process.env.PUBLIC_URL}/images/logout-white.png`}
               alt=""
+              onClick={goToLogin}
             />
           </li>
         </ul>
