@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { NAV_DATA } from './NavData';
 import './Nav.scss';
@@ -17,6 +17,22 @@ const Nav = () => {
   const goToMain = () => {
     navigate('/main');
   };
+
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    fetch('/data/userData.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // authorization: '토큰',
+      },
+    })
+      .then(res => res.json())
+      .then(result => {
+        setUserData(result.data);
+      });
+  }, []);
 
   return (
     <nav className="nav">
@@ -74,6 +90,7 @@ const Nav = () => {
             src={`${process.env.PUBLIC_URL}/images/shop-white.png`}
             alt="선호매장"
           />
+          {/* <span>{userData.favoriteStore}</span> */}
           <span>고양점</span>
         </div>
       </div>
