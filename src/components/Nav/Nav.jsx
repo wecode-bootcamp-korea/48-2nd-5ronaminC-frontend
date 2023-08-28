@@ -18,7 +18,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="nav">
+    <nav className="nav">
       <div className="firstLine">
         <img
           className="logo"
@@ -76,7 +76,7 @@ const Nav = () => {
           <span>고양점</span>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
