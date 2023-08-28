@@ -1,4 +1,5 @@
 @import '/src/style/variables.scss';
+@import './Font.scss';
 
 .nav {
   display: flex;
@@ -9,6 +10,8 @@
   gap: 1rem;
   padding: 1rem 0.3rem;
   padding-inline: 2.5rem 2.5rem;
+  background-color: $blue;
+  color: white;
 
   .firstLine {
     display: flex;
@@ -35,20 +38,31 @@
     }
 
     .searchBar {
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
       min-width: auto;
       margin-left: 2rem;
       flex-grow: 1;
       border-radius: 50em;
-      background-color: $footerBackgroundColor;
+      background-color: white;
 
-      &:hover {
-        background-color: $superLightGray;
+      // &:hover {
+      //   background-color: $superLightGray;
+      // }
+
+      &:focus {
+        background-color: white;
+      }
+
+      img {
+        width: 1rem;
+        height: 1rem;
       }
 
       input {
         padding: 0.8125rem;
         padding-inline-end: 3.6rem;
-        padding-inline-start: 3rem;
 
         font-size: 1rem;
         height: 3.125rem;
@@ -69,6 +83,7 @@
     .categories {
       display: flex;
       gap: 1.5rem;
+      @include categoryText;
     }
 
     .userFavorMarket {
@@ -81,7 +96,11 @@
       }
 
       span {
-        line-height: 28px;
+        font-family: pretendard Apple SD Gothic Neo;
+        font-size: 0.875rem;
+        line-height: 1.75;
+        font-style: normal;
+        font-weight: 500;
       }
     }
   }

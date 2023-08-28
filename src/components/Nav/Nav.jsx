@@ -16,20 +16,36 @@ const Nav = () => {
           alt="5KEA"
         />
         <div className="searchBar">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/search.png`}
+            alt="돋보기"
+          />
           <input type="text" placeholder="검색어를 입력해주세요" />
         </div>
         <ul className="headerIcons">
           <li>
-            <img src={`${process.env.PUBLIC_URL}/images/heart.png`} alt="" />
-          </li>
-          <li>
             <img
-              src={`${process.env.PUBLIC_URL}/images/shopping-cart.png`}
+              src={`${process.env.PUBLIC_URL}/images/heart-white.png`}
               alt=""
             />
           </li>
           <li>
-            <img src={`${process.env.PUBLIC_URL}/images/user.png`} alt="" />
+            <img
+              src={`${process.env.PUBLIC_URL}/images/shopping-cart-white.png`}
+              alt=""
+            />
+          </li>
+          <li>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/user-white.png`}
+              alt=""
+            />
+          </li>
+          <li>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/logout-white.png`}
+              alt=""
+            />
           </li>
         </ul>
       </div>
@@ -42,7 +58,7 @@ const Nav = () => {
         </ul>
         <div className="userFavorMarket">
           <img
-            src={`${process.env.PUBLIC_URL}/images/shop.png`}
+            src={`${process.env.PUBLIC_URL}/images/shop-white.png`}
             alt="선호매장"
           />
           <span>고양점</span>
