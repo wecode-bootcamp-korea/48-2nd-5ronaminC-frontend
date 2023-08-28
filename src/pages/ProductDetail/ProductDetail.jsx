@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductDetailInfo from './components/toggles/ProductDetailInfo';
 import ProductReview from './components/toggles/ProductReview';
 import ProductImages from './components/ProductImages';
@@ -7,14 +7,34 @@ import ProductNameInfo from './components/ProductNameInfo';
 import './ProductDetail.scss';
 
 const ProductDetail = () => {
+  const [productDetailData, setProductDetailData] = useState([]);
   const [isProductDetailInfo, setProductDetailInfo] = useState(false);
   const [isProductReview, setProductReview] = useState(false);
+
+  /*
+  useEffect(() => {
+    fetch('API', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: '토큰',
+      },
+    })
+      .then(res => res.json())
+      .then(result => {
+        setProductDetailData(result.data);
+      });
+  }, []);
+  */
 
   return (
     <div className="productInfo">
       <div className="productDetailAll">
         <div className="productImages">
-          <ProductImages />
+          <ProductImages
+            key={productDetailData.id}
+            productImages={productDetailData.imageUrl}
+          />
         </div>
         <div className="productDetail">
           <button
@@ -63,10 +83,12 @@ const ProductDetail = () => {
       </div>
       <div className="productNames">
         {isProductDetailInfo || isProductReview ? (
-          (isProductDetailInfo && <ProductDetailInfo />) ||
-          (isProductReview && <ProductReview />)
+          (isProductDetailInfo && (
+            <ProductDetailInfo productDetailData={productDetailData} />
+          )) ||
+          (isProductReview && <ProductReview key={productDetailData.id} />)
         ) : (
-          <ProductNameInfo />
+          <ProductNameInfo productDetailData={productDetailData} />
         )}
       </div>
     </div>

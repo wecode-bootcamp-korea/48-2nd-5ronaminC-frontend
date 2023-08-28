@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './ProductDetailInfo.scss';
 
-const ProductDetailInfo = () => {
+const ProductDetailInfo = ({ productDetailData }) => {
+  const { id, name, description, width, depth, height } = productDetailData;
+
   const [isSizeInfo, setSizeInfo] = useState(false);
 
   return (
-    <div className="productDetailInfo">
+    <div key={id} className="productDetailInfo">
       <h1>제품 설명</h1>
       <div className="productInfoContent">
-        <p>제품 설명........</p>
+        <p className="productName">제품 이름{name}</p>
+        <p>제품 설명........{description}</p>
       </div>
       <div className="size">
         <p>치수</p>
@@ -30,9 +33,9 @@ const ProductDetailInfo = () => {
       {isSizeInfo && (
         <div className="sizeToggle">
           <div className="productLength">
-            <p className="productWidth">가로</p>X
-            <p className="productDepth">세로</p>X
-            <p className="productHeight">높이</p>
+            <p className="productWidth">가로{width}</p>X
+            <p className="productDepth">세로{depth}</p>X
+            <p className="productHeight">높이{height}</p>
           </div>
         </div>
       )}

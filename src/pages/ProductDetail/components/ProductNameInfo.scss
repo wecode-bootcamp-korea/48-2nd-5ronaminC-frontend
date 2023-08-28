@@ -61,6 +61,7 @@
           color: $black;
           font-size: 2rem;
         }
+
         .productPriceUnit {
           display: inline-block;
           color: $black;
@@ -151,6 +152,22 @@
         display: inline-block;
         font-size: 0.875rem;
       }
+
+      .green {
+        display: inline-block;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50px;
+        background-color: green;
+      }
+
+      .red {
+        display: inline-block;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50px;
+        background-color: $pink;
+      }
     }
   }
 
@@ -175,14 +192,6 @@
 
         .productCount {
           order: 2;
-
-          input {
-            width: 2rem;
-            min-width: 1.2rem;
-            border: none;
-            text-align: center;
-            font-weight: 700;
-          }
         }
 
         .productQuantityMinus {
@@ -195,6 +204,10 @@
             height: 1.2rem;
             transform: translateY(10%);
           }
+        }
+
+        .productQuantityMinus:disabled {
+          opacity: 0.4;
         }
 
         .productQuantityPlus {
