@@ -63,7 +63,7 @@ const ProductNameInfo = ({ productDetailData }) => {
   const goToCart = () => {
     if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
-      fetch(`http://10.58.52.244:3000/carts/addCart${id} ${productCount}`, {
+      fetch('http://10.58.52.244:3000/carts/addcart', {
         method: 'Post',
         headers: {
           authorization:
