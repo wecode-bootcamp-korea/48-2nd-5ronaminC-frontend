@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LIST_DATA } from './MainData';
+import { SERVICE_DATA } from './MainData';
 import './Main.scss';
 
 const Main = () => {
@@ -95,29 +95,12 @@ const Main = () => {
       <div className="serviceContainer">
         <h2>다양한 이케아 서비스</h2>
         <ul className="services">
-          <li>
-            <img src="/images/truck.png" alt="배송서비스" />
-            <span>배송 서비스</span>
-          </li>
-          <li>
-            <img src="/images/diy.png" alt="조립서비스" />
-            <span>조립 서비스</span>
-          </li>
-          <li>
-            <img src="/images/tool.png" alt="설치서비스" />
-            <span>설치 서비스</span>
-          </li>
-          <li>
-            <img
-              src="/images/interior-design.png"
-              alt="인테리어 디자인 서비스"
-            />
-            <span>인테리어 디자인 서비스</span>
-          </li>
-          <li>
-            <img src="/images/recycle-bag.png" alt="바이백 서비스" />
-            <span>바이백 서비스</span>
-          </li>
+          {SERVICE_DATA.map(service => (
+            <li key={service.id}>
+              <img src={service.images} alt={`${service.name} 서비스`} />
+              <span>{service.name} 서비스</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
