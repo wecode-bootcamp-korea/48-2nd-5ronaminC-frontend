@@ -1,7 +1,21 @@
 import React from 'react';
 import './CartList.scss';
 
-const CartList = () => {
+const CartList = cartData => {
+  const {
+    totalProductQuantity,
+    productImageUrl,
+    productName,
+    categoryTypeName,
+    colorName,
+    width,
+    depth,
+    height,
+    productQuantity,
+    price,
+    subtotalPrice,
+  } = cartData;
+
   return (
     <div className="cartListAll">
       <div className="cartListRow">
@@ -15,12 +29,18 @@ const CartList = () => {
             </button>
           </div>
           <div className="cartListProductName">
-            <p>ProductName</p>
+            <p>
+              {/*ProductName*/}
+              {productName}
+            </p>
           </div>
           <div className="cartlistInfoDetail">
             <div className="cartListProducDetail">
-              <div className="productItem">품목</div>,
-              <div className="productColor">색상</div>,
+              <div className="productItem">
+                {/*품목*/}
+                {categoryTypeName}
+              </div>
+              ,<div className="productColor">색상{colorName}</div>,
             </div>
             <div className="cartListProducLength">
               <div className="productWidth">가로</div>X
