@@ -10,7 +10,7 @@ const ProductDetail = () => {
   const [currentInfo, setCurrentInfo] = useState('');
 
   useEffect(() => {
-    fetch('http://10.58.52.244:3000/products/get/8', {
+    fetch('http://10.58.52.244:3000/products/showproductdeatil/8', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
