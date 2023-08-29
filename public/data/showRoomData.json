@@ -2,8 +2,9 @@
   "data": {
     "id": 1,
     "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/263655844-aa9fdc4e-e0ca-4637-a07c-305e094d2308.jpg",
-    "product": [
+    "products": [
       {
+        "id": 1,
         "productName": "물건1",
         "coordinateX": 35,
         "coordinateY": 40,
@@ -12,6 +13,7 @@
         "new": true
       },
       {
+        "id": 2,
         "productName": "물건2",
         "coordinateX": 10,
         "coordinateY": 60,
@@ -20,6 +22,7 @@
         "new": false
       },
       {
+        "id": 3,
         "productName": "물건3",
         "coordinateX": 20,
         "coordinateY": 30,

@@ -9,10 +9,12 @@ const Main = () => {
   const [selectedCategory, setSelectedCategory] = useState('거실');
   const [productData, setProductData] = useState([]);
 
+  const { id } = productData;
+
   const navigate = useNavigate();
 
   const goToProductDetail = () => {
-    navigate('/product-detail');
+    navigate(`/product-detail/${id}`, { state: { productData } });
   };
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const Main = () => {
       .then(res => res.json())
       .then(result => {
         setShowRoomData(result.data);
-        setProductData(result.data.product);
+        setProductData(result.data.products);
       });
   }, [selectedCategory]);
 
