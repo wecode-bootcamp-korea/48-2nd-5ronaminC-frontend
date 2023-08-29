@@ -8,6 +8,9 @@ const Nav = () => {
   const EXCEPTION_PATH = ['/login', '/sign-up'];
   const isExceptionPath = EXCEPTION_PATH.some(path => path === pathname);
 
+  const [userData, setUserData] = useState();
+  const [isClickToggle, setIsClickToggle] = useState(false);
+
   const navigate = useNavigate();
 
   const goToLogin = () => {
@@ -21,8 +24,6 @@ const Nav = () => {
   const goToCart = () => {
     navigate('/cart');
   };
-
-  const [userData, setUserData] = useState();
 
   useEffect(() => {
     fetch('/data/userData.json', {
@@ -90,13 +91,47 @@ const Nav = () => {
             <li key={li.id}>{li.title}</li>
           ))}
         </ul>
-        <div className="userFavorMarket">
+
+        <div
+          className="userFavorStore"
+          onClick={() => {
+            setIsClickToggle(e => !e);
+          }}
+        >
           <img
             src={`${process.env.PUBLIC_URL}/images/shop-white.png`}
             alt="선호매장"
           />
           {/* <span>{userData.favoriteStore}</span> */}
           <span>고양점</span>
+          {isClickToggle ? (
+            <div className="favoriteStoreModal">
+              <div className="modalTop">
+                <button className="closeToggleButton">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/images/close.png`}
+                    alt="닫기"
+                  />
+                </button>
+              </div>
+              <div className="modalMain">
+                <div className="nameInfo">
+                  <div className="storeName">고양점</div>
+                  <div className="closedTimeInfo">폐점시간: 오후 8:00</div>
+                  <div className="address">주소</div>
+                </div>
+                <div className="timeInfo">
+                  <div className="runTimeInfo">
+                    정상영업시간: 오전 11:00 - 오후 9:00
+                  </div>
+                  <div className="timeInfo">시간</div>
+                </div>
+                <div className="goToStorePageButton">
+                  <button>상점 웹페이지 방문하기</button>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     </nav>

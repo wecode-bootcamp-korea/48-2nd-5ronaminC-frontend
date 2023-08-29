@@ -88,7 +88,7 @@
       @include categoryText;
     }
 
-    .userFavorMarket {
+    .userFavorStore {
       display: flex;
       gap: 0.5rem;
       cursor: pointer;
@@ -104,6 +104,84 @@
         line-height: 2;
         font-style: normal;
         font-weight: 500;
+      }
+    }
+
+    .favoriteStoreModal {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 999999;
+      width: 25rem;
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 1rem 0 0 1rem;
+      border: 1px solid lightgray;
+      color: black;
+
+      .modalTop {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .closeToggleButton {
+          border: 0;
+          background-color: transparent;
+          padding: 1rem;
+        }
+      }
+
+      .modalMain {
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+        padding: 0 3rem 3rem 3rem;
+
+        .nameInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          border-bottom: 1px solid $superLightGray;
+          padding-bottom: 1rem;
+
+          .closedTimeInfo {
+            font-family: inherit;
+            font-weight: 600;
+            color: $superDeepGray;
+          }
+        }
+
+        .timeInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .storeName {
+          font-family: inherit;
+          font-size: 1.5rem;
+          font-weight: 700;
+          line-height: 1.45;
+          letter-spacing: -0.0042em;
+        }
+        .goToStorePageButton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 2.5rem;
+          padding: 0 1.5rem;
+          background-color: $blue;
+          border-radius: 1rem;
+
+          button {
+            color: white;
+            border: 0;
+            background-color: transparent;
+
+            @include buttonText;
+            font-size: 0.75rem;
+            line-height: 1.3333333333;
+          }
+        }
       }
     }
   }
