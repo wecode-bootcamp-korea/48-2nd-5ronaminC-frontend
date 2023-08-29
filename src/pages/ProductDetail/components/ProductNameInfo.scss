@@ -279,13 +279,17 @@
         }
       }
 
+      .productDirectOrder:hover {
+        background-color: $deeplBlue;
+      }
+
       .productCart {
         width: 40%;
         margin-top: 1rem;
         border: 0;
         background-color: transparent;
         border-radius: 1rem;
-        background-color: $superDeepGray;
+        background-color: $deepGray;
         padding: 0.2rem;
 
         img {
@@ -301,6 +305,9 @@
           font-weight: 700;
           color: white;
         }
+      }
+      .productCart:hover {
+        background-color: $superDeepGray;
       }
     }
   }
