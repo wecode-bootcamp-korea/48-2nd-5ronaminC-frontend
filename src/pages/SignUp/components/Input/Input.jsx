@@ -7,8 +7,7 @@ const Input = ({
   type,
   placeholder,
   maxLength,
-  // form,
-  // setForm,
+  // handleChange,
 }) => {
   return (
     <div className={`${className} wrap`}>
@@ -16,10 +15,10 @@ const Input = ({
       <div className="inputWrap">
         <input
           type={type}
+          name={className}
           placeholder={placeholder}
-          maxlength={maxLength}
-          // value={form.className}
-          // onChange={e => setForm({ ...form, className: e.target.value })}
+          maxLength={maxLength}
+          // onChange={handleChange}
         />
         {type === 'password' && (
           <img

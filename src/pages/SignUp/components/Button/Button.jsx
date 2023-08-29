@@ -1,11 +1,12 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({ name, buttonStyle, goToLink, navigate }) => {
+const Button = ({ name, buttonStyle, onClick }) => {
   return (
     <button
+      type="button"
       className={`buttonComponent ${buttonStyle}`}
-      onClick={() => navigate({ goToLink })}
+      onClick={onClick}
     >
       {name}
     </button>

@@ -16,8 +16,8 @@ const INPUT_RADIO_DATA = {
     },
     { id: 2, name: 'market', title: '고양점' },
     { id: 3, name: 'market', title: '기흥점' },
-    { id: 2, name: 'market', title: '동부산' },
-    { id: 3, name: 'market', title: '선택안함' },
+    { id: 4, name: 'market', title: '동부산' },
+    { id: 5, name: 'market', title: '선택안함' },
   ],
 };
 

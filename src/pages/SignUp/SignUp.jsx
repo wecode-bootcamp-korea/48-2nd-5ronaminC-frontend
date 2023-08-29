@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
@@ -7,6 +7,7 @@ import { INPUT_RADIO_DATA, INPUT_GUIDE_DATA } from './InputData';
 import './SignUp.scss';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [signupUserInfo, setSignUserInfoData] = useState({
     email: '',
     password: '',
@@ -19,7 +20,15 @@ const SignUp = () => {
     favoriteStore: '',
   });
 
-  const navigate = useNavigate();
+  const handleInput = e => {
+    const { name, value } = e.target;
+
+    setSignUserInfoData({ ...signupUserInfo, [name]: value });
+  };
+
+  const signup = () => {
+    fetch().then().then();
+  };
 
   return (
     <div className="main">
@@ -45,7 +54,7 @@ const SignUp = () => {
             <span>5KEA.kr - </span>
             <a href="https://www.ikea.com/kr/ko/customer-service/cookie-policy/">
               쿠키정책
-            </a>{' '}
+            </a>
             <span>,</span>
             <a href="https://www.ikea.com/kr/ko/customer-service/privacy-policy/privacy-policy-pub20a57ecd">
               개인정보처리방침
@@ -57,7 +66,7 @@ const SignUp = () => {
         </div>
       </div>
       <div className="right">
-        <form className="userInput">
+        <form className="userInput" onChange={handleInput}>
           {INPUT_GUIDE_DATA.first.map((el, idx) => (
             <React.Fragment key={el.id}>
               <Input
@@ -66,13 +75,19 @@ const SignUp = () => {
                 type={el.type}
                 placeholder={el.placeholder}
                 maxLength={el.maxLength}
+                // handleChange={handleInput}
               />
               {idx === 4 && (
                 <div className="gender wrap">
                   <label>성별</label>
                   <ul className="radioWrap">
                     {INPUT_RADIO_DATA.gender.map(el => (
-                      <Radio key={el.id} name={el.name} title={el.title} />
+                      <Radio
+                        key={el.id}
+                        name={el.name}
+                        title={el.title}
+                        // onChange={handleInput}
+                      />
                     ))}
                   </ul>
                 </div>
@@ -84,18 +99,18 @@ const SignUp = () => {
             <label>선호매장</label>
             <ul className="radioWrap">
               {INPUT_RADIO_DATA.favoriteStore.map(el => (
-                <Radio key={el.id} name={el.name} title={el.title} />
+                <Radio
+                  key={el.id}
+                  name={el.name}
+                  title={el.title}
+                  // onChange={handleInput}
+                />
               ))}
             </ul>
           </div>
 
           <div className="buttonWrap wrap">
-            <Button
-              name="회원가입 완료"
-              buttonStyle="blue"
-              goToLink="/main"
-              goFunction={navigate}
-            />
+            <Button name="회원가입 완료" buttonStyle="blue" onClick={signup} />
           </div>
         </form>
       </div>
