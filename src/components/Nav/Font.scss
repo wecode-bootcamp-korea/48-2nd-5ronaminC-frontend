@@ -1,0 +1,33 @@
+@import '/src/style/variables.scss';
+
+@mixin titleText {
+  font-family: pretendard Apple SD Gothic Neo;
+  font-size: 2.25rem;
+  line-height: 1.333;
+  letter-spacing: -0.0063em;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin bodyText {
+  font-family: pretendard Apple SD Gothic Neo;
+  font-size: 0.875rem;
+  line-height: 1.571;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin buttonText {
+  font-family: pretendard Apple SD Gothic Neo;
+  font-size: 0.875rem;
+  line-height: 1.571;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin categoryText {
+  font-family: pretendard Apple SD Gothic Neo;
+  font-size: 0.875rem;
+  line-height: 1.571;
+  font-weight: 700;
+}
