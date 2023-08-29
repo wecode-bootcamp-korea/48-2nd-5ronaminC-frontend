@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CartList from './components/CartList';
 import ProductPriceAll from './components/ProductPriceAll';
 import './Cart.scss';
 
 const Cart = () => {
+  const [cartData, setCartData] = useState({});
+
   return (
     <div className="cart">
       <div className="cartAll">
