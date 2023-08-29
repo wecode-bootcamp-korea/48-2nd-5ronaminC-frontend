@@ -15,7 +15,6 @@ const Main = () => {
     navigate('/product-detail');
   };
 
-  //카테고리
   useEffect(() => {
     fetch('/data/mainData.json', {
       method: 'GET',
@@ -64,13 +63,11 @@ const Main = () => {
             </li>
           ))}
         </ul>
-        {console.log(showRoomData.product)}
         <div className="showRoomContainer" key={showRoomData.id}>
           <div className="imageContainer">
             <img src={showRoomData.showroomImageUrl} alt={showRoomData.name} />
           </div>
           <ul className="listWireframe">
-            {console.log('결과', productData)}
             {productData.map((product, num) => {
               return (
                 <li
@@ -79,9 +76,13 @@ const Main = () => {
                     top: `${product.coordinateX}%`,
                     left: `${product.coordinateY}%`,
                   }}
+                  onClick={goToProductDetail}
                 >
-                  <div className="dot" onClick={goToProductDetail} />
-                  <div className="productDetailToggle">
+                  <div className="dot" />
+                  <div
+                    className="productDetailToggle"
+                    onClick={goToProductDetail}
+                  >
                     <div className="info">
                       <div className="isNew">{product.new && 'new'}</div>
                       <div className="productName">{product.productName}</div>
@@ -89,6 +90,9 @@ const Main = () => {
                         {product.categoryTypeName}
                       </div>
                       <div className="price">{product.price}원</div>
+                    </div>
+                    <div className="goButton">
+                      <img src="/images/go-arrow.png" alt="화살표" />
                     </div>
                   </div>
                 </li>

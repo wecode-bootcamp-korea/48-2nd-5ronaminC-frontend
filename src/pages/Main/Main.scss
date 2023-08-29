@@ -86,30 +86,42 @@
     align-items: center;
     justify-content: center;
 
-    transition:
-      border-color 250ms ease-in-out,
-      opacity 250ms ease-in-out,
-      visibility 250ms ease-in-out;
     transform: translateX(-1rem) translateY(-1rem) scale(0.999);
 
     &:hover .productDetailToggle {
-      display: flex;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .productDetailToggle {
-      display: none;
-      gap: 0.2rem;
+      display: flex;
+      justify-content: space-between;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 1s;
+
       position: absolute;
       left: 3rem;
-      flex-direction: column;
       background-color: rgb(var(--colour-neutral-1, 255, 255, 255));
       min-width: 8.4375rem;
       max-width: 11.25rem;
       padding: 1rem 1rem 1.2rem 1rem;
       border-radius: 1rem;
+      border: 1px solid $lightGray;
 
-      &:hover {
+      .info {
         display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .goButton {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 1rem;
+        }
       }
 
       .isNew {
