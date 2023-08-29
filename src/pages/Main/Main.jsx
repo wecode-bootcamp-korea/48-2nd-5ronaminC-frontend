@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SERVICE_DATA } from './MainData';
 import './Main.scss';
 
 const Main = () => {
   const [categoryData, setCategoryData] = useState([]);
-  const [showRoomData, setShowRoomData] = useState();
+  const [showRoomData, setShowRoomData] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState('거실');
+  const [productData, setProductData] = useState([]);
+
+  const navigate = useNavigate();
+
+  const goToProductDetail = () => {
+    navigate('/product-detail');
+  };
 
   //카테고리
   useEffect(() => {
@@ -22,20 +30,20 @@ const Main = () => {
       });
   }, []);
 
-  //쇼룸 불러오기
-  // useEffect(() => {
-  //   fetch('쇼룸주소/? spaceId=selectedCategory', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //       // authorization: '토큰',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       setShowRoomData(result.data);
-  //     });
-  // }, [selectedCategory]);
+  useEffect(() => {
+    fetch('/data/showRoomData.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // authorization: '토큰',
+      },
+    })
+      .then(res => res.json())
+      .then(result => {
+        setShowRoomData(result.data);
+        setProductData(result.data.product);
+      });
+  }, [selectedCategory]);
 
   return (
     <div className="main">
@@ -55,39 +63,37 @@ const Main = () => {
               {category.categorySpaceName}
             </li>
           ))}
-
-          {/* {mainData.map(i => {
-            <li>{i.showRoomName}</li>;
-          })} */}
         </ul>
-        <div className="showRoomContainer">
+        {console.log(showRoomData.product)}
+        <div className="showRoomContainer" key={showRoomData.id}>
           <div className="imageContainer">
-            <img
-              src="https://user-images.githubusercontent.com/77326740/263655844-aa9fdc4e-e0ca-4637-a07c-305e094d2308.jpg"
-              alt=""
-            />
+            <img src={showRoomData.showroomImageUrl} alt={showRoomData.name} />
           </div>
           <ul className="listWireframe">
-            {/* {mainData.product.map((i, num) => {
-                <li key={num} style={`top: ${i.coordinateX}% left: ${i.coordinateY}%`}>
-               <a className="dot" style={top: i.coordinateX left: i.coordinateY}/>
-                </li>;
-              })} */}
-            <li style={{ top: '30%', left: '40%' }}>
-              <a className="dot" />
-              <div className="productDetailToggle">
-                <div className="info">
-                  <div className="isNew">New</div>
-                  <div className="productName">인간탁자</div>
-                  <div className="categoryTypeName">탁자</div>
-                  <div className="price">34,000 원</div>
-                </div>
-
-                <div className="goButton">
-                  <img src="/images/" alt="" />
-                </div>
-              </div>
-            </li>
+            {console.log('결과', productData)}
+            {productData.map((product, num) => {
+              return (
+                <li
+                  key={num}
+                  style={{
+                    top: `${product.coordinateX}%`,
+                    left: `${product.coordinateY}%`,
+                  }}
+                >
+                  <div className="dot" onClick={goToProductDetail} />
+                  <div className="productDetailToggle">
+                    <div className="info">
+                      <div className="isNew">{product.new && 'new'}</div>
+                      <div className="productName">{product.productName}</div>
+                      <div className="categoryTypeName">
+                        {product.categoryTypeName}
+                      </div>
+                      <div className="price">{product.price}원</div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
