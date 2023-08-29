@@ -8,7 +8,7 @@ const INPUT_RADIO_DATA = {
     { id: 2, name: 'gender', title: '여자' },
     { id: 3, name: 'gender', title: '응답안함' },
   ],
-  marketFavor: [
+  favoriteStore: [
     {
       id: 1,
       name: 'market',
@@ -62,7 +62,7 @@ const INPUT_GUIDE_DATA = {
     },
     {
       id: 6,
-      className: 'address',
+      className: 'addressNumber',
       title: '우편번호',
       type: 'number',
       placeholder: '00000(5자리)',

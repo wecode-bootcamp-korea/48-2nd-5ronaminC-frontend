@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 import Radio from './components/Radio/Radio';
 import { INPUT_RADIO_DATA, INPUT_GUIDE_DATA } from './InputData';
-
 import './SignUp.scss';
 
 const SignUp = () => {
+  const [signupUserInfo, setSignUserInfoData] = useState({
+    email: '',
+    password: '',
+    name: '',
+    birthday: '',
+    phoneNumber: '',
+    gender: '',
+    addressNumber: '',
+    detailAddress: '',
+    favoriteStore: '',
+  });
+
   const navigate = useNavigate();
 
   return (
@@ -69,10 +80,10 @@ const SignUp = () => {
             </React.Fragment>
           ))}
 
-          <div className="marketFavor wrap">
+          <div className="favoriteStore wrap">
             <label>선호매장</label>
             <ul className="radioWrap">
-              {INPUT_RADIO_DATA.marketFavor.map(el => (
+              {INPUT_RADIO_DATA.favoriteStore.map(el => (
                 <Radio key={el.id} name={el.name} title={el.title} />
               ))}
             </ul>
