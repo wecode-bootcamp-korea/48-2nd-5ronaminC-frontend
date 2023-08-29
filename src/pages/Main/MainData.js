@@ -4,15 +4,15 @@ const LIST_DATA = [
     name: '거실',
   },
   {
-    id: 1,
+    id: 2,
     name: '침실',
   },
   {
-    id: 1,
+    id: 3,
     name: '주방',
   },
   {
-    id: 1,
+    id: 4,
     name: '욕실',
   },
 ];

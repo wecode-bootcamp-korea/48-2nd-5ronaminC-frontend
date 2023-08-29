@@ -3,7 +3,8 @@ import { LIST_DATA } from './MainData';
 import './Main.scss';
 
 const Main = () => {
-  const [mainData, setMainDataa] = useState();
+  const [mainData, setMainData] = useState();
+  const [selectedCategory, setSelectedCategory] = useState('거실');
 
   useEffect(() => {
     fetch('/data/userData.json', {
@@ -15,18 +16,26 @@ const Main = () => {
     })
       .then(res => res.json())
       .then(result => {
-        setMainDataa(result.data);
+        setMainData(result.data);
       });
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <div className="main">
       <div className="mainVisual">
         <h2>공간별 쇼핑하기</h2>
         <ul className="tabBar">
-          {LIST_DATA.map(i => {
-            <li key={i.id}>i.name</li>;
-          })}
+          {LIST_DATA.map(tab => (
+            <li
+              className={`category ${
+                selectedCategory === tab.name ? 'selected' : ''
+              }`}
+              key={tab.id}
+              onClick={() => setSelectedCategory(tab.name)}
+            >
+              {tab.name}
+            </li>
+          ))}
 
           {/* {mainData.map(i => {
             <li>{i.showRoomName}</li>;
@@ -39,16 +48,28 @@ const Main = () => {
               alt=""
             />
           </div>
-          <div className="listWireframe">
-            <ul className="listContainer">
-              <li>
-                <a className="dot" />
-              </li>
-              <li>
-                <a className="dot" />
-              </li>
-            </ul>
-          </div>
+          <ul className="listWireframe">
+            {/* {mainData.product.map((i, num) => {
+                <li key={num} style={`top: ${i.coordinateX}% left: ${i.coordinateY}%`}>
+               <a className="dot" style={top: i.coordinateX left: i.coordinateY}/>
+                </li>;
+              })} */}
+            <li style={{ top: '30%', left: '40%' }}>
+              <a className="dot" />
+              <div className="productDetailToggle">
+                <div className="info">
+                  <div className="isNew">New</div>
+                  <div className="productName">인간탁자</div>
+                  <div className="categoryTypeName">탁자</div>
+                  <div className="price">34,000 원</div>
+                </div>
+
+                <div className="goButton">
+                  <img src="/images/" alt="" />
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
