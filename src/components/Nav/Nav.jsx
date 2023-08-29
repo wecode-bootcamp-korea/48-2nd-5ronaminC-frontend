@@ -5,10 +5,10 @@ import './Nav.scss';
 
 const Nav = () => {
   const { pathname } = useLocation();
-  const EXCEPTION_PATH = ['/login', '/sign-up'];
+  const EXCEPTION_PATH = ['/login', '/signup'];
   const isExceptionPath = EXCEPTION_PATH.some(path => path === pathname);
 
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState({});
   const [isClickToggle, setIsClickToggle] = useState(false);
 
   const navigate = useNavigate();
@@ -39,6 +39,8 @@ const Nav = () => {
       });
   }, []);
 
+  if (isExceptionPath) return null;
+
   return (
     <nav className="nav">
       <div className="firstLine">
@@ -49,36 +51,27 @@ const Nav = () => {
           onClick={goToMain}
         />
         <div className="searchBar">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/search.png`}
-            alt="돋보기"
-          />
+          <img src="/images/search.png" alt="돋보기" />
           <input type="text" placeholder="검색어를 입력해주세요" />
         </div>
         <ul className="headerIcons">
           <li>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/heart-white.png`}
-              alt=""
-            />
+            <img src="/images/heart-white.png" alt="찜한 상품" />
           </li>
           <li>
             <img
-              src={`${process.env.PUBLIC_URL}/images/shopping-cart-white.png`}
-              alt=""
+              src="/images/shopping-cart-white.png"
+              alt="장바구니"
               onClick={goToCart}
             />
           </li>
           <li>
-            <img
-              src={`${process.env.PUBLIC_URL}/images/user-white.png`}
-              alt=""
-            />
+            <img src="/images/user-white.png" alt="내 정보" />
           </li>
           <li>
             <img
-              src={`${process.env.PUBLIC_URL}/images/logout-white.png`}
-              alt=""
+              src="/images/logout-white.png"
+              alt="로그아웃"
               onClick={goToLogin}
             />
           </li>
@@ -98,20 +91,14 @@ const Nav = () => {
             setIsClickToggle(e => !e);
           }}
         >
-          <img
-            src={`${process.env.PUBLIC_URL}/images/shop-white.png`}
-            alt="선호매장"
-          />
-          {/* <span>{userData.favoriteStore}</span> */}
-          <span>고양점</span>
+          <img src="/images/shop-white.png" alt="선호매장" />
+          <span>{userData.favoriteStore}</span>
+          {/* <span>고양점</span> */}
           {isClickToggle ? (
             <div className="favoriteStoreModal">
               <div className="modalTop">
                 <button className="closeToggleButton">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/images/close.png`}
-                    alt="닫기"
-                  />
+                  <img src="/images/close.png" alt="닫기" />
                 </button>
               </div>
               <div className="modalMain">
