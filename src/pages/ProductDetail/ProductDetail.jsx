@@ -15,7 +15,7 @@ const ProductDetail = () => {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjgzMTgzLCJleHAiOjE2OTQxNDcxODN9.0N9eJ0Rp_f3ljX8FTcJTJBLQ6wh3_39ga7x7TnDc1Xg',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjkzMjM1LCJleHAiOjE2OTQxNTcyMzV9.LNetoMh3OgByppYadsnn8YOew6S9chO47kzaQOzQiG0',
       },
     })
       .then(res => res.json())
@@ -85,7 +85,10 @@ const ProductDetail = () => {
       </div>
       <div className="productNames">
         {DETAIL_TABS.find(tab => currentInfo === tab.engTitle)?.component || (
-          <ProductNameInfo productDetailData={productDetailData} />
+          <ProductNameInfo
+            productDetailData={productDetailData}
+            setProductDetailData={setProductDetailData}
+          />
         )}
       </div>
     </div>

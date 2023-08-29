@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductNameInfo.scss';
 
 const MIN_PRODUCT_COUNT = 1;
 const MAX_PRODUCT_COUNT = 99;
 
-const ProductNameInfo = ({ productDetailData }) => {
+const ProductNameInfo = ({ productDetailData, setProductDetailData }) => {
   const { id, name, price, type, width, depth, height, assembly, isLiked } =
     productDetailData;
 
   const [like, setLike] = useState(isLiked);
   const [productCount, setProductCount] = useState(1);
-  const [cart, setCart] = useState(id);
+  const [cart, setCart] = useState(id, productCount);
   const [cartCount, setCartCount] = useState(0);
 
   const navigate = useNavigate();
-
-  const goToCart = () => {
-    if (window.confirm('장바구니로 이동하시겠습니까?')) {
-      navigate('/cart');
-    }
-  };
 
   const goToPayment = () => {
     if (window.confirm('결제 페이지로 이동하시겠습니까?')) {
@@ -57,6 +51,28 @@ const ProductNameInfo = ({ productDetailData }) => {
   };
 
   //장바구니, 바로결제 통신 - post
+  const goToCart = () => {
+    if (window.confirm('장바구니로 이동하시겠습니까?')) {
+      navigate('/cart');
+      fetch('http://10.58.52.244:3000/carts/addCart7 2', {
+        method: 'Post',
+        headers: {
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjkzMjM1LCJleHAiOjE2OTQxNTcyMzV9.LNetoMh3OgByppYadsnn8YOew6S9chO47kzaQOzQiG0',
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          id,
+          productCount,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        });
+    }
+  };
+  console.log(id, productCount);
 
   return (
     <div key={id} className="productNameInfo">
