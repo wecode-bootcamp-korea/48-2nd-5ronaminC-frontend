@@ -123,8 +123,7 @@ const ProductNameInfo = ({ productDetailData }) => {
             </div>
           </div>
           <div className="productPrice">
-            <p className="productMoney">{price}</p>
-            {/*.toLocaleString() 에러*/}
+            <p className="productMoney">{Number(price).toLocaleString()}</p>
             <p className="productPriceUnit">원</p>
           </div>
         </div>
