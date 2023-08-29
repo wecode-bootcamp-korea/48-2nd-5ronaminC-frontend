@@ -4,23 +4,23 @@ import ProductPriceAll from './components/ProductPriceAll';
 import './Cart.scss';
 
 const Cart = () => {
-  const [cartData, setCartData] = useState({});
+  const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.52.244:3000/products/get7', {
+    fetch('http://10.58.52.178:3000/carts/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjkzMjM1LCJleHAiOjE2OTQxNTcyMzV9.LNetoMh3OgByppYadsnn8YOew6S9chO47kzaQOzQiG0',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
       },
     })
       .then(res => res.json())
       .then(result => {
-        setCartData(result.data[0]);
+        setCartData(result.data);
       });
   }, []);
-
+  console.log(cartData);
   return (
     <div className="cart">
       <div className="cartAll">
@@ -31,11 +31,11 @@ const Cart = () => {
           </div>
           <div className="cartQuantity">
             <p className="cartQuantityName">전체 상품</p>
-            <p className="cartQuantitUnit">(99개)</p>
+            <p className="cartQuantitUnit">({cartData.productQuantity})</p>
           </div>
         </div>
         <div className="cartList">
-          <CartList cartData={cartData} />
+          <CartList cartListData={cartData} />
         </div>
       </div>
       <div className="productPrice">

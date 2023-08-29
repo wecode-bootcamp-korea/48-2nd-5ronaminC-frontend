@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductPriceAll.scss';
 
-const ProductPriceAll = cartData => {
+const ProductPriceAll = ({ cartData }) => {
   const {
     totalProductQuantity,
     totalProductPrice,
