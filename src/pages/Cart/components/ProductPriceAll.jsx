@@ -1,7 +1,14 @@
 import React from 'react';
 import './ProductPriceAll.scss';
 
-const ProductPriceAll = () => {
+const ProductPriceAll = cartData => {
+  const {
+    totalProductQuantity,
+    totalProductPrice,
+    shippingFee,
+    totalOrderPrice,
+  } = cartData;
+
   return (
     <div className="productPriceInfo">
       <div className="productPriceInfoName">
@@ -11,21 +18,21 @@ const ProductPriceAll = () => {
         <div className="productPriceInfoQuantity">
           <p className="InfoQuantityLeft">상품 수량</p>
           <div className="InfoQuantityRight">
-            <p className="InfoQuantityCount">2</p>
+            <p className="InfoQuantityCount">{totalProductQuantity}</p>
             <p>개</p>
           </div>
         </div>
         <div className="productPriceInfoAmount">
           <p>상품 금액</p>
           <div className="InfoAmountRight">
-            <p className="InfoAmountCount">2,344,563</p>
+            <p className="InfoAmountCount">{totalProductPrice}</p>
             <p>원</p>
           </div>
         </div>
         <div className="productPriceInfoDelivery">
           <p>배송비</p>
           <div className="InfoDeliveryRight">
-            <p className="InfoDeliveryCount">3000</p>
+            <p className="InfoDeliveryCount">{shippingFee}</p>
             <p>원</p>
           </div>
         </div>
@@ -33,7 +40,7 @@ const ProductPriceAll = () => {
       <div className="productPriceInfoSum">
         <p>총 주문금액</p>
         <div className="InfoSumRight">
-          <p className="InfoSumCount">2,344,563</p>
+          <p className="InfoSumCount">{totalOrderPrice}</p>
           <p>원</p>
         </div>
       </div>

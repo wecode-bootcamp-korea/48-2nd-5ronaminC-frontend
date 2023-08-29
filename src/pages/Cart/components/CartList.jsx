@@ -40,20 +40,36 @@ const CartList = cartData => {
                 {/*품목*/}
                 {categoryTypeName}
               </div>
-              ,<div className="productColor">색상{colorName}</div>,
+              ,
+              <div className="productColor">
+                {/*색상*/}
+                {colorName}
+              </div>
+              ,
             </div>
             <div className="cartListProducLength">
-              <div className="productWidth">가로</div>X
-              <div className="productDepth">세로</div>X
-              <div className="productHeight">높이</div>
+              <div className="productWidth">
+                {/*가로*/}
+                {width}
+              </div>
+              X
+              <div className="productDepth">
+                {/*세로*/}
+                {depth}
+              </div>
+              X
+              <div className="productHeight">
+                {/*높이*/}
+                {height}
+              </div>
             </div>
           </div>
           <div className="productlistQuantity">
-            <p>수량 : 1 개</p>
+            <p>수량 : {productQuantity} 개</p>
           </div>
           <div className="productlistInfoBottom">
             <div className="productlistPrice">
-              <p className="productlistMoney">2,344,563</p>
+              <p className="productlistMoney">{subtotalPrice}</p>
               <p className="productlistUnit">원</p>
             </div>
             <div className="productlistButton">
