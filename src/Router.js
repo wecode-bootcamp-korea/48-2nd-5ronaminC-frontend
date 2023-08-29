@@ -12,7 +12,7 @@ import Payment from './pages/Payment/Payment';
 const Router = () => {
   return (
     <BrowserRouter>
-      {/* <Nav /> */}
+      <Nav />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
