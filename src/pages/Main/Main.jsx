@@ -3,13 +3,13 @@ import { LIST_DATA } from './MainData';
 import './Main.scss';
 
 const Main = () => {
-  const [categoryData, setCategoryData] = useState();
+  const [categoryData, setCategoryData] = useState([]);
   const [showRoomData, setShowRoomData] = useState();
-  const [selectedCategory, setSelectedCategory] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState('거실');
 
   //카테고리
   useEffect(() => {
-    fetch('./mainData.json', {
+    fetch('/data/mainData.json', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -18,7 +18,7 @@ const Main = () => {
     })
       .then(res => res.json())
       .then(result => {
-        setCategoryData(result);
+        setCategoryData(result.data);
       });
   }, []);
 
@@ -55,18 +55,6 @@ const Main = () => {
               {category.categorySpaceName}
             </li>
           ))}
-
-          {/* {LIST_DATA.map(tab => (
-            <li
-              className={`category ${
-                selectedCategory === tab.name ? 'selected' : ''
-              }`}
-              key={tab.id}
-              onClick={() => setSelectedCategory(tab.name)}
-            >
-              {tab.name}
-            </li>
-          ))} */}
 
           {/* {mainData.map(i => {
             <li>{i.showRoomName}</li>;
