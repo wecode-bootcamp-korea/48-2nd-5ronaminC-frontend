@@ -3,11 +3,13 @@ import { LIST_DATA } from './MainData';
 import './Main.scss';
 
 const Main = () => {
-  const [mainData, setMainData] = useState();
-  const [selectedCategory, setSelectedCategory] = useState('거실');
+  const [categoryData, setCategoryData] = useState();
+  const [showRoomData, setShowRoomData] = useState();
+  const [selectedCategory, setSelectedCategory] = useState(1);
 
+  //카테고리
   useEffect(() => {
-    fetch('/data/userData.json', {
+    fetch('./mainData.json', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -16,16 +18,45 @@ const Main = () => {
     })
       .then(res => res.json())
       .then(result => {
-        setMainData(result.data);
+        setCategoryData(result);
       });
-  }, [selectedCategory]);
+  }, []);
+
+  //쇼룸 불러오기
+  // useEffect(() => {
+  //   fetch('쇼룸주소/? spaceId=selectedCategory', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       // authorization: '토큰',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(result => {
+  //       setShowRoomData(result.data);
+  //     });
+  // }, [selectedCategory]);
 
   return (
     <div className="main">
       <div className="mainVisual">
         <h2>공간별 쇼핑하기</h2>
         <ul className="tabBar">
-          {LIST_DATA.map(tab => (
+          {categoryData.map(category => (
+            <li
+              className={`category ${
+                selectedCategory === category.categorySpaceName
+                  ? 'selected'
+                  : ''
+              }`}
+              key={category.id}
+              onClick={() => setSelectedCategory(category.categorySpaceName)}
+            >
+              {category.categorySpaceName}
+            </li>
+          ))}
+
+          {/* {LIST_DATA.map(tab => (
             <li
               className={`category ${
                 selectedCategory === tab.name ? 'selected' : ''
@@ -35,7 +66,7 @@ const Main = () => {
             >
               {tab.name}
             </li>
-          ))}
+          ))} */}
 
           {/* {mainData.map(i => {
             <li>{i.showRoomName}</li>;
