@@ -21,6 +21,7 @@ const ProductReview = key => {
         authorization: '',
       },
       body: JSON.stringify({
+        key: key,
         content: newReview,
       }),
     })

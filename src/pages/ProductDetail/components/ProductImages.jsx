@@ -7,6 +7,8 @@ const ProductImages = ({ key, productImages }) => {
       <div className="productImage">
         <img src="/images/desk.jpg" /*{productImages}*/ alt="제품 1번째 사진" />
       </div>
+      {/*"/images/desk.jpg"*/}
+      {/*"/images/벤치의자.png"*/}
       <div className="productImage">
         <img src="/images/desk.jpg" /*{productImages}*/ alt="제품 2번째 사진" />
       </div>

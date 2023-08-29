@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductNameInfo.scss';
 
+const MIN_PRODUCT_COUNT = 1;
+const MAX_PRODUCT_COUNT = 99;
+
 const ProductNameInfo = ({ productDetailData }) => {
   const { id, name, price, type, width, depth, height, assembly, isLiked } =
     productDetailData;
@@ -14,34 +17,32 @@ const ProductNameInfo = ({ productDetailData }) => {
   const navigate = useNavigate();
 
   const goToCart = () => {
-    if (window.confirm('장바구니로 이동하시겠습니까?') == true) {
+    if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
-      console.log('장바구니로 이동');
-    } else {
-      console.log('취소되었습니다');
-    }
-  };
-  const goToPayment = () => {
-    if (window.confirm('결제 페이지로 이동하시겠습니까?')) {
-      navigate('/payment');
-      alert('결제 페이지로 이동');
-    } else {
-      alert('취소합니다.');
     }
   };
 
+  const goToPayment = () => {
+    if (window.confirm('결제 페이지로 이동하시겠습니까?')) {
+      navigate('/payment');
+    }
+  };
+
+  const totalSumPrice = price * productCount;
+
   const handleIncrease = () => {
+    if (productCount >= MAX_PRODUCT_COUNT) {
+      return;
+    }
     setProductCount(productCount + 1);
   };
+
   const handleDecrease = () => {
     if (productCount <= 1) {
       return;
     }
     setProductCount(productCount - 1);
   };
-
-  const assemblyBoolean = assembly === 1 ? true : false;
-  const ProductCountValidation = productCount === 1 ? true : false;
 
   //찜하기 통신 - post
   const likeHandling = () => {
@@ -63,19 +64,36 @@ const ProductNameInfo = ({ productDetailData }) => {
       <div className="productInfoTop">
         <div className="productNameWrap">
           <div className="productName">
-            <p>ProductName{name}</p>
+            <p>
+              {/*ProductName*/}
+              {name}
+            </p>
           </div>
           <div className="productItemDetail">
-            <div className="productItem">품목{type}</div>,
-            <div className="productColor">색상</div>,
+            <div className="productItem">
+              {/*품목*/}
+              {type}
+            </div>
+            ,<div className="productColor">색상</div>,
           </div>
           <div className="productLength">
-            <div className="productWidth">가로{width}</div>X
-            <div className="productDepth">세로{depth}</div>X
-            <div className="productHeight">높이{height}</div>
+            <div className="productWidth">
+              {/*가로*/}
+              {width}
+            </div>
+            X
+            <div className="productDepth">
+              {/*세로*/}
+              {depth}
+            </div>
+            X
+            <div className="productHeight">
+              {/*높이*/}
+              {height}
+            </div>
           </div>
           <div className="productPrice">
-            <p className="productMoney">2,344,563{price}</p>
+            <p className="productMoney">{price.toLocaleString()}</p>
             <p className="productPriceUnit">원</p>
           </div>
         </div>
@@ -109,7 +127,7 @@ const ProductNameInfo = ({ productDetailData }) => {
         <div className="productAssembly">
           <img src="images/diy.png" alt="조립 서비스 아이콘" />
           <p>조립 서비스</p>
-          <div className={assemblyBoolean ? 'green' : 'red'} />
+          <div className={assembly ? 'green' : 'red'} />
         </div>
       </div>
       <div className="productOrder">
@@ -119,26 +137,30 @@ const ProductNameInfo = ({ productDetailData }) => {
             <button
               className="productQuantityMinus"
               onClick={handleDecrease}
-              disabled={ProductCountValidation}
+              disabled={productCount <= MIN_PRODUCT_COUNT}
             >
               <img src="images/decrease.png" alt="마이너스 아이콘" />
             </button>
-            <button className="productQuantityPlus" onClick={handleIncrease}>
+            <button
+              className="productQuantityPlus"
+              onClick={handleIncrease}
+              disabled={productCount >= MAX_PRODUCT_COUNT}
+            >
               <img src="images/increase.png" alt="플러스 아이콘" />
             </button>
           </div>
           <div className="productAll">
             <p className="priceAllName">총 금액</p>
-            <p className="productAllPrice">2,344,563</p>
+            <p className="productAllPrice">{totalSumPrice.toLocaleString()}</p>
             <p className="priceUnit">원</p>
           </div>
         </div>
         <div className="productOrderButton">
-          <button className="productDirectOrder" navigate={goToPayment}>
+          <button className="productDirectOrder" onClick={goToPayment}>
             <img src="images/check-white.png" alt="바로구매 아이콘" />
             <p>바로구매</p>
           </button>
-          <button className="productCart" navigate={goToCart}>
+          <button className="productCart" onClick={goToCart}>
             <img src="images/add-to-cart-white.png" alt="장바구니 아이콘" />
             <p>장바구니</p>
           </button>

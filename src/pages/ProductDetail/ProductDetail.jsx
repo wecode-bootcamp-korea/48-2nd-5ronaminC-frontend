@@ -3,29 +3,47 @@ import ProductDetailInfo from './components/toggles/ProductDetailInfo';
 import ProductReview from './components/toggles/ProductReview';
 import ProductImages from './components/ProductImages';
 import ProductNameInfo from './components/ProductNameInfo';
-
 import './ProductDetail.scss';
 
 const ProductDetail = () => {
-  const [productDetailData, setProductDetailData] = useState([]);
-  const [isProductDetailInfo, setProductDetailInfo] = useState(false);
-  const [isProductReview, setProductReview] = useState(false);
+  const [productDetailData, setProductDetailData] = useState({});
+  const [currentInfo, setCurrentInfo] = useState('');
 
-  /*
   useEffect(() => {
-    fetch('API', {
+    fetch('http://10.58.52.244:3000/products/get7', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '토큰',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjgzMTgzLCJleHAiOjE2OTQxNDcxODN9.0N9eJ0Rp_f3ljX8FTcJTJBLQ6wh3_39ga7x7TnDc1Xg',
       },
     })
       .then(res => res.json())
       .then(result => {
-        setProductDetailData(result.data);
+        setProductDetailData(result.data[0]);
       });
   }, []);
-  */
+
+  const DETAIL_TABS = [
+    {
+      id: 1,
+      title: '제품 설명',
+      engTitle: 'productInfo',
+      component: <ProductDetailInfo productDetailData={productDetailData} />,
+    },
+    {
+      id: 2,
+      title: '상품평',
+      engTitle: 'review',
+      component: <ProductReview key={productDetailData.id} />,
+    },
+    {
+      id: 3,
+      title: '제품 Q&A',
+      engTitle: 'qna',
+      component: <ProductDetailInfo productDetailData={productDetailData} />,
+    },
+  ];
 
   return (
     <div className="productInfo">
@@ -37,57 +55,36 @@ const ProductDetail = () => {
           />
         </div>
         <div className="productDetail">
-          <button
-            className="productDetailInfo"
-            onClick={() => {
-              setProductDetailInfo(e => !e);
-            }}
-          >
-            <div className="productInfoName">
-              <p>제품 설명</p>
-            </div>
-            <div className="productInfoNameImg">
-              {isProductDetailInfo ? (
-                <img src="images/back.png" alt="제품 설명 back 토글 버튼" />
-              ) : (
-                <img src="images/next.png" alt="제품 설명 토글 버튼" />
-              )}
-            </div>
-          </button>
-          <button
-            className="productReview"
-            onClick={() => {
-              setProductReview(e => !e);
-            }}
-          >
-            <div className="productReviewName">
-              <p>상품평</p>
-            </div>
-            <div className="productReviewNameImg">
-              {isProductReview ? (
-                <img src="images/back.png" alt="상품평 back 토글 버튼" />
-              ) : (
-                <img src="images/next.png" alt="상품평 토글 버튼" />
-              )}
-            </div>
-          </button>
-          <button className="productQnA">
-            <div className="productQnAName">
-              <p>제품 Q&A</p>
-            </div>
-            <div className="productQnANameImg">
-              <img src="images/next.png" alt="제품 Q&A 버튼" />
-            </div>
-          </button>
+          {DETAIL_TABS.map(tab => (
+            <button
+              key={tab.id}
+              className="detailTab"
+              onClick={() => {
+                if (currentInfo === tab.engTitle) {
+                  setCurrentInfo('');
+
+                  return;
+                }
+
+                setCurrentInfo(tab.engTitle);
+              }}
+            >
+              <div className="productInfoName">
+                <p>{tab.title}</p>
+              </div>
+              <div className="productInfoNameImg">
+                {currentInfo === tab.engTitle ? (
+                  <img src="images/back.png" alt="제품 설명 back 토글 버튼" />
+                ) : (
+                  <img src="images/next.png" alt="제품 설명 토글 버튼" />
+                )}
+              </div>
+            </button>
+          ))}
         </div>
       </div>
       <div className="productNames">
-        {isProductDetailInfo || isProductReview ? (
-          (isProductDetailInfo && (
-            <ProductDetailInfo productDetailData={productDetailData} />
-          )) ||
-          (isProductReview && <ProductReview key={productDetailData.id} />)
-        ) : (
+        {DETAIL_TABS.find(tab => currentInfo === tab.engTitle)?.component || (
           <ProductNameInfo productDetailData={productDetailData} />
         )}
       </div>
