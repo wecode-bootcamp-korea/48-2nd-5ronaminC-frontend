@@ -1,17 +1,36 @@
-import React from 'react';
-import './ServiceData';
+import React, { useEffect, useState } from 'react';
+import { LIST_DATA } from './MainData';
 import './Main.scss';
 
 const Main = () => {
+  const [mainData, setMainDataa] = useState();
+
+  useEffect(() => {
+    fetch('/data/userData.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // authorization: '토큰',
+      },
+    })
+      .then(res => res.json())
+      .then(result => {
+        setMainDataa(result.data);
+      });
+  }, []);
+
   return (
     <div className="main">
       <div className="mainVisual">
         <h2>공간별 쇼핑하기</h2>
         <ul className="tabBar">
-          <li>거실</li>
-          <li>침실</li>
-          <li>주방</li>
-          <li>욕실</li>
+          {LIST_DATA.map(i => {
+            <li key={i.id}>i.name</li>;
+          })}
+
+          {/* {mainData.map(i => {
+            <li>{i.showRoomName}</li>;
+          })} */}
         </ul>
         <div className="showRoomContainer">
           <div className="imageContainer">
