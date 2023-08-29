@@ -5,14 +5,23 @@ import './ProductNameInfo.scss';
 const MIN_PRODUCT_COUNT = 1;
 const MAX_PRODUCT_COUNT = 99;
 
-const ProductNameInfo = ({ productDetailData, setProductDetailData }) => {
-  const { id, name, price, type, width, depth, height, assembly, isLiked } =
-    productDetailData;
+const ProductNameInfo = ({ productDetailData }) => {
+  const {
+    id,
+    name,
+    price,
+    typeName,
+    totalReview,
+    colorName,
+    width,
+    depth,
+    height,
+    assembly,
+    isLiked,
+  } = productDetailData;
 
   const [like, setLike] = useState(isLiked);
   const [productCount, setProductCount] = useState(1);
-  const [cart, setCart] = useState(id, productCount);
-  const [cartCount, setCartCount] = useState(0);
 
   const navigate = useNavigate();
 
@@ -54,7 +63,7 @@ const ProductNameInfo = ({ productDetailData, setProductDetailData }) => {
   const goToCart = () => {
     if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
-      fetch('http://10.58.52.244:3000/carts/addCart7 2', {
+      fetch(`http://10.58.52.244:3000/carts/addCart${id} ${productCount}`, {
         method: 'Post',
         headers: {
           authorization:
@@ -88,9 +97,14 @@ const ProductNameInfo = ({ productDetailData, setProductDetailData }) => {
           <div className="productItemDetail">
             <div className="productItem">
               {/*품목*/}
-              {type}
+              {typeName}
             </div>
-            ,<div className="productColor">색상</div>,
+            ,
+            <div className="productColor">
+              {/*색상*/}
+              {colorName}
+            </div>
+            ,
           </div>
           <div className="productLength">
             <div className="productWidth">
@@ -110,6 +124,7 @@ const ProductNameInfo = ({ productDetailData, setProductDetailData }) => {
           </div>
           <div className="productPrice">
             <p className="productMoney">{price}</p>
+            {/*.toLocaleString() 에러*/}
             <p className="productPriceUnit">원</p>
           </div>
         </div>
@@ -126,7 +141,10 @@ const ProductNameInfo = ({ productDetailData, setProductDetailData }) => {
         <div className="productReview">
           <p>상품평</p>
           <p>(</p>
-          <p>개수</p>
+          <p>
+            {/*개수*/}
+            {totalReview}
+          </p>
           <p>)</p>
         </div>
       </div>

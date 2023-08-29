@@ -10,7 +10,7 @@ const ProductDetail = () => {
   const [currentInfo, setCurrentInfo] = useState('');
 
   useEffect(() => {
-    fetch('http://10.58.52.244:3000/products/get7', {
+    fetch('http://10.58.52.244:3000/products/get8', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -85,10 +85,7 @@ const ProductDetail = () => {
       </div>
       <div className="productNames">
         {DETAIL_TABS.find(tab => currentInfo === tab.engTitle)?.component || (
-          <ProductNameInfo
-            productDetailData={productDetailData}
-            setProductDetailData={setProductDetailData}
-          />
+          <ProductNameInfo productDetailData={productDetailData} />
         )}
       </div>
     </div>
