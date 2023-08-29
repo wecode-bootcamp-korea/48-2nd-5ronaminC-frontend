@@ -18,6 +18,10 @@ const Nav = () => {
     navigate('/main');
   };
 
+  const goToCart = () => {
+    navigate('/cart');
+  };
+
   const [userData, setUserData] = useState();
 
   useEffect(() => {
@@ -61,6 +65,7 @@ const Nav = () => {
             <img
               src={`${process.env.PUBLIC_URL}/images/shopping-cart-white.png`}
               alt=""
+              onClick={goToCart}
             />
           </li>
           <li>
