@@ -15,6 +15,8 @@ const CartList = ({ cartListData, getCart }) => {
         if (res.ok) {
           alert('삭제 완료');
           getCart();
+
+          // return;
         }
         return res.json();
       })
