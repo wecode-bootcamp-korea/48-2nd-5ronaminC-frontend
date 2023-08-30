@@ -27,7 +27,25 @@ const SignUp = () => {
   };
 
   const signup = () => {
-    fetch().then().then();
+    fetch('주소', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: signupUserInfo.email,
+        password: signupUserInfo.password,
+        name: signupUserInfo.name,
+        birthday: signupUserInfo.birthday,
+        phoneNumber: signupUserInfo.phoneNumber,
+        gender: signupUserInfo.gender,
+        addressNumber: signupUserInfo.addressNumber,
+        detailAddress: signupUserInfo.detailAddress,
+        favoriteStore: signupUserInfo.favoriteStore,
+      }),
+    })
+      .then(response => response.json)
+      .then(result => {});
   };
 
   return (
@@ -110,7 +128,11 @@ const SignUp = () => {
           </div>
 
           <div className="buttonWrap wrap">
-            <Button name="회원가입 완료" buttonStyle="blue" onClick={signup} />
+            <Button
+              name="회원가입 완료"
+              buttonStyle="blue"
+              // onClick={signup}s
+            />
           </div>
         </form>
       </div>
