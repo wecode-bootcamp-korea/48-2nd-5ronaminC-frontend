@@ -4,7 +4,6 @@ import './ProductPriceAll.scss';
 
 const ProductPriceAll = ({ cartProductData }) => {
   const {
-    userId,
     totalProductQuantity,
     totalProductPrice,
     shippingFee,
