@@ -1,25 +1,25 @@
 import React from 'react';
 import './CartList.scss';
 
-const CartList = ({ cartListData }) => {
+const CartList = ({ cartListData, getCart }) => {
   const cartDeleting = item => {
-    fetch('API', {
+    fetch(`http://10.58.52.224:3000/carts/${item}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
       },
-      body: JSON.stringify({ productId: item }),
     })
       .then(res => {
-        if (res.status === 200) {
+        if (res.ok) {
           alert('삭제 완료');
-        } else if (res.status === 403) {
-          return res.json();
+          getCart();
         }
+        return res.json();
       })
       .then(result => {
-        console.log('에러 메시지 ->', result.message);
+        console.log(result);
       });
   };
 

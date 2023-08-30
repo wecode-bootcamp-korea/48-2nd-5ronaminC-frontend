@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductPriceAll.scss';
 
-const ProductPriceAll = ({ cartData }) => {
+const ProductPriceAll = ({ cartProductData }) => {
   const {
     userId,
     totalProductQuantity,
     totalProductPrice,
     shippingFee,
     totalOrderPrice,
-  } = cartData;
+  } = cartProductData;
 
   const navigate = useNavigate();
 
@@ -22,9 +22,7 @@ const ProductPriceAll = ({ cartData }) => {
           authorization: '',
           'Content-Type': 'application/json;charset=utf-8',
         },
-        body: JSON.stringify({
-          userId,
-        }),
+        //body: JSON.stringify({userId,}),
       })
         .then(res => res.json())
         .then(data => {
@@ -32,7 +30,7 @@ const ProductPriceAll = ({ cartData }) => {
         });
     }
   };
-  console.log(userId);
+  // console.log(userId);
 
   return (
     <div className="productPriceInfo">

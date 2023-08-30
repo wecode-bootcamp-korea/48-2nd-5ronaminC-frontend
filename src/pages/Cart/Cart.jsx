@@ -6,8 +6,8 @@ import './Cart.scss';
 const Cart = () => {
   const [cartData, setCartData] = useState([]);
 
-  useEffect(() => {
-    fetch('http://10.58.52.178:3000/carts/', {
+  const getCart = () => {
+    fetch('http://10.58.52.224:3000/carts/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -17,10 +17,16 @@ const Cart = () => {
     })
       .then(res => res.json())
       .then(result => {
+        if (!result.data) return;
+
         setCartData(result.data);
       });
+  };
+
+  useEffect(() => {
+    getCart();
   }, []);
-  console.log(cartData);
+  console.log('cartDadta 처음 불러올 떄', cartData);
 
   return (
     <div className="cart">
@@ -32,15 +38,17 @@ const Cart = () => {
           </div>
           <div className="cartQuantity">
             <p className="cartQuantityName">전체 상품</p>
-            <p className="cartQuantitUnit">({cartData.productQuantity})</p>
+            <p className="cartQuantitUnit">
+              ({cartData[0]?.totalProductQuantity})
+            </p>
           </div>
         </div>
         <div className="cartList">
-          <CartList cartListData={cartData} />
+          <CartList cartListData={cartData} getCart={getCart} />
         </div>
       </div>
       <div className="productPrice">
-        <ProductPriceAll cartData={cartData} />
+        <ProductPriceAll cartProductData={cartData[0] || {}} />
       </div>
     </div>
   );
