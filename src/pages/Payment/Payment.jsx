@@ -7,11 +7,12 @@ const Payment = () => {
   const [paymentData, setPaymentData] = useState([]);
 
   useEffect(() => {
-    fetch('API', {
+    fetch('http://10.58.52.224:3000/orders', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMzk1MTQwLCJleHAiOjE2OTQyNTkxNDB9.2XCsXPoHpUYGDNxN9N1M4jEvcuwgp0kve-62L9t7nh4',
       },
     })
       .then(res => res.json())

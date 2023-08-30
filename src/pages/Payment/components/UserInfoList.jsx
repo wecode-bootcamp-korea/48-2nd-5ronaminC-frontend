@@ -81,7 +81,7 @@ const UserInfoList = ({ userInfoData }) => {
       </div>
       {isUserCheck && (
         <div className="userCheck">
-          <UserCheck userInfoData={userInfoData} />
+          <UserCheck userInfoData={userInfoData[0] || {}} />
         </div>
       )}
       <div className="userInfoAddressCheck">
@@ -107,7 +107,7 @@ const UserInfoList = ({ userInfoData }) => {
       </div>
       {isAddressCheck && (
         <div className="addressCheck">
-          <AddressCheck addressInfoData={userInfoData} />
+          <AddressCheck addressInfoData={userInfoData[0] || {}} />
         </div>
       )}
       <div className="userInfoPointCheck">

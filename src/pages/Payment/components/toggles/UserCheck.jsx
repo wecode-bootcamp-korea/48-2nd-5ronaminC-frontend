@@ -2,7 +2,7 @@ import React from 'react';
 import './UserCheck.scss';
 
 const UserCheck = ({ userInfoData }) => {
-  const { username, phoneNumber, email } = userInfoData;
+  const { username, phone_number, email } = userInfoData;
 
   return (
     <div className="userCheck">
@@ -19,7 +19,7 @@ const UserCheck = ({ userInfoData }) => {
             <p className="contact">연락처</p>
             <div>
               <p className="phoneNumName">핸드폰 :</p>
-              <p className="phoneNum">{phoneNumber}</p>
+              <p className="phoneNum">{phone_number}</p>
             </div>
             <div>
               <p className="emailName">이메일 :</p>
