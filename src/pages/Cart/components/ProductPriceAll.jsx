@@ -1,13 +1,38 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ProductPriceAll.scss';
 
 const ProductPriceAll = ({ cartData }) => {
   const {
+    userId,
     totalProductQuantity,
     totalProductPrice,
     shippingFee,
     totalOrderPrice,
   } = cartData;
+
+  const navigate = useNavigate();
+
+  const goToPayment = () => {
+    if (window.confirm('결제로 이동하시겠습니까?')) {
+      navigate('/payment');
+      fetch('API', {
+        method: 'Post',
+        headers: {
+          authorization: '',
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          userId,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        });
+    }
+  };
+  console.log(userId);
 
   return (
     <div className="productPriceInfo">
@@ -45,7 +70,7 @@ const ProductPriceAll = ({ cartData }) => {
         </div>
       </div>
       <div className="productPriceInfoButton">
-        <button>
+        <button onClick={goToPayment}>
           <p>결제하기</p>
           <div className="InfoButtonBg">
             <img src="images/next.png" alt="다음 페이지 버튼" />

@@ -21,6 +21,7 @@ const Cart = () => {
       });
   }, []);
   console.log(cartData);
+
   return (
     <div className="cart">
       <div className="cartAll">

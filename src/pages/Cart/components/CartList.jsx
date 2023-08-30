@@ -2,17 +2,38 @@ import React from 'react';
 import './CartList.scss';
 
 const CartList = ({ cartListData }) => {
+  const cartDeleting = item => {
+    fetch('API', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: '',
+      },
+      body: JSON.stringify({ productId: item }),
+    })
+      .then(res => {
+        if (res.status === 200) {
+          alert('삭제 완료');
+        } else if (res.status === 403) {
+          return res.json();
+        }
+      })
+      .then(result => {
+        console.log('에러 메시지 ->', result.message);
+      });
+  };
+
   return (
     <div className="cartListAll">
-      {cartListData.map((tab, i) => {
+      {cartListData.map(tab => {
         return (
-          <div className="cartListRow" key={i}>
+          <div className="cartListRow" key={tab.productId}>
             <div className="cartImg">
               <img src="images/desk.jpg" alt="장바구니 제품 사진" />
             </div>
             <div className="cartListInfo">
               <div className="cartListDelete">
-                <button>
+                <button onClick={() => cartDeleting(tab.productId)}>
                   <img src="images/close.png" alt="삭제 버튼" />
                 </button>
               </div>
