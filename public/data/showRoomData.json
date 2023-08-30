@@ -1,10 +1,12 @@
 {
   "data": {
-    "id": 1,
+    "showroomId": 1,
+    "categorySpaceName": "거실",
+    "name": "거실",
     "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/263655844-aa9fdc4e-e0ca-4637-a07c-305e094d2308.jpg",
-    "products": [
+    "product": [
       {
-        "id": 1,
+        "productId": 1,
         "productName": "물건1",
         "coordinateX": 35,
         "coordinateY": 40,
@@ -13,7 +15,7 @@
         "new": true
       },
       {
-        "id": 2,
+        "productId": 2,
         "productName": "물건2",
         "coordinateX": 10,
         "coordinateY": 60,
@@ -22,7 +24,7 @@
         "new": false
       },
       {
-        "id": 3,
+        "productId": 3,
         "productName": "물건3",
         "coordinateX": 20,
         "coordinateY": 30,
@@ -30,8 +32,6 @@
         "categoryTypeName": "어쩌고저쩌고",
         "new": true
       }
-    ],
-    "categorySpaceName": "거실",
-    "name": "거실"
+    ]
   }
 }

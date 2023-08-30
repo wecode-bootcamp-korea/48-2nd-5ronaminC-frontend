@@ -1,24 +1,72 @@
 {
-  "data": [
-    {
-      "id": 1,
-      "categorySpaceName": "거실",
-      "name": "거실"
+  "data": {
+    "showroom": {
+      "id": 5,
+      "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/263655777-c26d3fc1-4f46-4e70-93bb-07d24adbd5e4.jpg",
+      "categorySpaceName": "화장실"
     },
-    {
-      "id": 2,
-      "categorySpaceName": "침실",
-      "name": "침실"
-    },
-    {
-      "id": 3,
-      "categorySpaceName": "주방",
-      "name": "주방"
-    },
-    {
-      "id": 4,
-      "categorySpaceName": "욕실",
-      "name": "욕실"
-    }
-  ]
+
+    "products": [
+      {
+        "id": 2,
+        "productName": "피카츄",
+        "price": 50000,
+        "description": "백만볼트",
+        "categorySpaceName": "화장실",
+        "coordinateX": 20,
+        "coordinateY": 30,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 3,
+        "productName": "라이츄",
+        "price": 50000,
+        "description": "천만볼트",
+        "categorySpaceName": "화장실",
+        "coordinateX": 20,
+        "coordinateY": 30,
+        "categoryTypeName": "가구"
+      },
+      {
+        "id": 4,
+        "productName": "파이리",
+        "price": 100000,
+        "description": "화염",
+        "categorySpaceName": "화장실",
+        "coordinateX": 20,
+        "coordinateY": 30,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 5,
+        "productName": "야도란",
+        "price": 700000,
+        "description": "소라게",
+        "categorySpaceName": "화장실",
+        "coordinateX": 30,
+        "coordinateY": 40,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 6,
+        "productName": "로켓단",
+        "price": 400000,
+        "description": "악당들",
+        "categorySpaceName": "화장실",
+        "coordinateX": 30,
+        "coordinateY": 40,
+        "categoryTypeName": "가구"
+      },
+      {
+        "id": 7,
+        "productName": "벤츠",
+        "price": 10000000,
+        "description": "프리미엄세단",
+        "categorySpaceName": "화장실",
+        "coordinateX": 40,
+        "coordinateY": 20,
+        "categoryTypeName": "가구"
+      }
+    ]
+  }
 }

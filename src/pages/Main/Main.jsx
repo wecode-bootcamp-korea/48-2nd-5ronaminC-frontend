@@ -5,24 +5,20 @@ import './Main.scss';
 
 const Main = () => {
   const [categoryData, setCategoryData] = useState([]);
-  const [showRoomData, setShowRoomData] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState('거실');
-  const [productData, setProductData] = useState([]);
-
-  const { id } = productData;
-
+  const [showroomData, setShowroomData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
+  const [showroomId, setShowroomId] = useState(1);
   const navigate = useNavigate();
-
-  const goToProductDetail = () => {
-    navigate(`/product-detail/${id}`, { state: { productData } });
+  const goToProductDetail = id => {
+    navigate(`/product-detail/${id}`);
   };
 
   useEffect(() => {
-    fetch('/data/mainData.json', {
+    fetch('http://10.58.52.206:3000/main/category', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        // authorization: '토큰',
+        authorization: localStorage.getItem('TOKEN'),
       },
     })
       .then(res => res.json())
@@ -32,19 +28,23 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/data/showRoomData.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        // authorization: '토큰',
+    fetch(
+      `http://10.58.52.206:3000/main/?mainId=${showroomId}`,
+
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          authorization: localStorage.getItem('TOKEN'),
+        },
       },
-    })
+    )
       .then(res => res.json())
       .then(result => {
-        setShowRoomData(result.data);
-        setProductData(result.data.products);
+        setShowroomData(result.data.showroom);
+        setProductsData(result.data.products);
       });
-  }, [selectedCategory]);
+  }, [showroomId]);
 
   return (
     <div className="main">
@@ -54,39 +54,37 @@ const Main = () => {
           {categoryData.map(category => (
             <li
               className={`category ${
-                selectedCategory === category.categorySpaceName
-                  ? 'selected'
-                  : ''
+                showroomId === category.id ? 'selected' : ''
               }`}
               key={category.id}
-              onClick={() => setSelectedCategory(category.categorySpaceName)}
+              onClick={() => setShowroomId(category.id)}
             >
               {category.categorySpaceName}
             </li>
           ))}
         </ul>
-        <div className="showRoomContainer" key={showRoomData.id}>
+        <div className="showRoomContainer" key={showroomData.id}>
           <div className="imageContainer">
-            <img src={showRoomData.showroomImageUrl} alt={showRoomData.name} />
+            <img
+              src={showroomData.showroomImageUrl}
+              alt={showroomData.categorySpaceName}
+            />
           </div>
           <ul className="listWireframe">
-            {productData.map((product, num) => {
+            {productsData.map(product => {
               return (
                 <li
-                  key={num}
+                  key={product.id}
                   style={{
                     top: `${product.coordinateX}%`,
                     left: `${product.coordinateY}%`,
                   }}
-                  onClick={goToProductDetail}
+                  onClick={() => goToProductDetail(product.id)}
                 >
                   <div className="dot" />
-                  <div
-                    className="productDetailToggle"
-                    onClick={goToProductDetail}
-                  >
+                  <div className="productDetailToggle">
                     <div className="info">
-                      <div className="isNew">{product.new && 'new'}</div>
+                      <div className="isNew">{product.new && 'new'}New</div>
                       <div className="productName">{product.productName}</div>
                       <div className="categoryTypeName">
                         {product.categoryTypeName}
