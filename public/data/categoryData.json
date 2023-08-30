@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "categorySpaceName": "거실"
+    },
+    {
+      "id": 2,
+      "categorySpaceName": "욕실"
+    },
+    {
+      "id": 3,
+      "categorySpaceName": "침실"
+    },
+    {
+      "id": 4,
+      "categorySpaceName": "주방"
+    },
+    {
+      "id": 5,
+      "categorySpaceName": "화장실"
+    }
+  ]
+}

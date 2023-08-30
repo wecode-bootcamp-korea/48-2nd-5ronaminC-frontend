@@ -1,0 +1,71 @@
+{
+  "data": {
+    "showroom": {
+      "id": 1,
+      "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/263655777-c26d3fc1-4f46-4e70-93bb-07d24adbd5e4.jpg",
+      "categorySpaceName": "거실"
+    },
+    "products": [
+      {
+        "id": 2,
+        "productName": "어쩌고",
+        "price": 50000,
+        "description": "백만볼트",
+        "categorySpaceName": "화장실",
+        "coordinateX": 20,
+        "coordinateY": 30,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 3,
+        "productName": "저쩌고",
+        "price": 50000,
+        "description": "천만볼트",
+        "categorySpaceName": "화장실",
+        "coordinateX": 12,
+        "coordinateY": 30,
+        "categoryTypeName": "가구"
+      },
+      {
+        "id": 4,
+        "productName": "아저씨",
+        "price": 100000,
+        "description": "화염",
+        "categorySpaceName": "화장실",
+        "coordinateX": 20,
+        "coordinateY": 30,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 5,
+        "productName": "감자",
+        "price": 700000,
+        "description": "소라게",
+        "categorySpaceName": "화장실",
+        "coordinateX": 83,
+        "coordinateY": 32,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 6,
+        "productName": "사자",
+        "price": 400000,
+        "description": "악당들",
+        "categorySpaceName": "화장실",
+        "coordinateX": 11,
+        "coordinateY": 40,
+        "categoryTypeName": "가구"
+      },
+      {
+        "id": 7,
+        "productName": "오장",
+        "price": 10000000,
+        "description": "프리미엄세단",
+        "categorySpaceName": "화장실",
+        "coordinateX": 87,
+        "coordinateY": 12,
+        "categoryTypeName": "가구"
+      }
+    ]
+  }
+}

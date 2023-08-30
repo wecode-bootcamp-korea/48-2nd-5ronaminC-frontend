@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SERVICE_DATA } from './MainData';
+import Product from './components/Product';
 import './Main.scss';
 
 const Main = () => {
@@ -14,13 +15,17 @@ const Main = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.52.206:3000/main/category', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization: localStorage.getItem('TOKEN'),
+    fetch(
+      '/data/categoryData.json',
+      // `http://10.58.52.206:3000/main/category`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          authorization: localStorage.getItem('TOKEN'),
+        },
       },
-    })
+    )
       .then(res => res.json())
       .then(result => {
         setCategoryData(result.data);
@@ -29,7 +34,8 @@ const Main = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.206:3000/main/?mainId=${showroomId}`,
+      `/data/showroomData${showroomId}.json`,
+      // `http://10.58.52.206:3000/main/?mainId=${showroomId}`,
 
       {
         method: 'GET',
@@ -73,29 +79,11 @@ const Main = () => {
           <ul className="listWireframe">
             {productsData.map(product => {
               return (
-                <li
+                <Product
                   key={product.id}
-                  style={{
-                    top: `${product.coordinateX}%`,
-                    left: `${product.coordinateY}%`,
-                  }}
-                  onClick={() => goToProductDetail(product.id)}
-                >
-                  <div className="dot" />
-                  <div className="productDetailToggle">
-                    <div className="info">
-                      <div className="isNew">{product.new && 'new'}New</div>
-                      <div className="productName">{product.productName}</div>
-                      <div className="categoryTypeName">
-                        {product.categoryTypeName}
-                      </div>
-                      <div className="price">{product.price}원</div>
-                    </div>
-                    <div className="goButton">
-                      <img src="/images/go-arrow.png" alt="화살표" />
-                    </div>
-                  </div>
-                </li>
+                  product={product}
+                  goToProductDetail={goToProductDetail}
+                />
               );
             })}
           </ul>
