@@ -4,10 +4,31 @@ import UserCheck from './toggles/UserCheck';
 import AddressCheck from './toggles/AddressCheck';
 import './UserInfoList.scss';
 
-const UserInfoList = () => {
+const UserInfoList = ({ userInfoData }) => {
   const [isProductCheck, setProductCheck] = useState(false);
   const [isUserCheck, setUserCheck] = useState(false);
   const [isAddressCheck, setAddressCheck] = useState(false);
+
+  const CompletePayment = () => {
+    fetch('API', {
+      method: 'Post',
+      headers: {
+        authorization: '',
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => {
+        if (res.message === 200) {
+          alert('결제 완료');
+        } else if (res.message === 403) {
+          alert('잔액 부족');
+          return res.json();
+        }
+      })
+      .then(result => {
+        console.log(result);
+      });
+  };
 
   return (
     <div className="userInfoList">
@@ -34,7 +55,7 @@ const UserInfoList = () => {
       </div>
       {isProductCheck && (
         <div className="cartListCheck">
-          <CartListCheck />
+          <CartListCheck cartInfoData={userInfoData} />
         </div>
       )}
       <div className="userInfoCheck">
@@ -60,7 +81,7 @@ const UserInfoList = () => {
       </div>
       {isUserCheck && (
         <div className="userCheck">
-          <UserCheck />
+          <UserCheck userInfoData={userInfoData} />
         </div>
       )}
       <div className="userInfoAddressCheck">
@@ -86,7 +107,7 @@ const UserInfoList = () => {
       </div>
       {isAddressCheck && (
         <div className="addressCheck">
-          <AddressCheck />
+          <AddressCheck addressInfoData={userInfoData} />
         </div>
       )}
       <div className="userInfoPointCheck">
@@ -99,7 +120,7 @@ const UserInfoList = () => {
             <div className="pointCheck">
               <div className="pointCheckList">
                 <p className="pointCheckToggleName">나의 포인트 :</p>
-                <p className="point">3,344,563</p>
+                <p className="point">{userInfoData.point}</p>
                 <p className="pointUnit">p</p>
               </div>
               <div className="goToCart">
@@ -110,7 +131,7 @@ const UserInfoList = () => {
               </div>
             </div>
             <div className="orderButton">
-              <button>
+              <button onClick={CompletePayment}>
                 <img src="images/check-white.png" alt="결제 결정 버튼" />
                 <p>결제하기</p>
               </button>
