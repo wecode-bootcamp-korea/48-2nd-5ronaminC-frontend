@@ -47,7 +47,7 @@ const Main = () => {
   }, [showroomId]);
 
   return (
-    <div className="main">
+    <div className="mainContainer">
       <div className="mainVisual">
         <h2>공간별 쇼핑하기</h2>
         <ul className="tabBar">
