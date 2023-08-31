@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ProductDetailInfo from './components/toggles/ProductDetailInfo';
 import ProductReview from './components/toggles/ProductReview';
 import ProductImages from './components/ProductImages';
@@ -8,14 +9,15 @@ import './ProductDetail.scss';
 const ProductDetail = () => {
   const [productDetailData, setProductDetailData] = useState({});
   const [currentInfo, setCurrentInfo] = useState('');
+  const { id } = useParams();
 
   useEffect(() => {
-    fetch('http://10.58.52.244:3000/products/showproductdeatil/8', {
+    fetch(`http://10.58.52.122:3000/products/showproductdetail/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjkzMjM1LCJleHAiOjE2OTQxNTcyMzV9.LNetoMh3OgByppYadsnn8YOew6S9chO47kzaQOzQiG0',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
       },
     })
       .then(res => res.json())
@@ -44,6 +46,8 @@ const ProductDetail = () => {
       component: <ProductDetailInfo productDetailData={productDetailData} />,
     },
   ];
+
+  if (Object.keys(productDetailData).length === 0) return null;
 
   return (
     <div className="productInfo">
@@ -74,9 +78,9 @@ const ProductDetail = () => {
               </div>
               <div className="productInfoNameImg">
                 {currentInfo === tab.engTitle ? (
-                  <img src="images/back.png" alt="제품 설명 back 토글 버튼" />
+                  <img src="/images/back.png" alt="제품 설명 back 토글 버튼" />
                 ) : (
-                  <img src="images/next.png" alt="제품 설명 토글 버튼" />
+                  <img src="/images/next.png" alt="제품 설명 토글 버튼" />
                 )}
               </div>
             </button>

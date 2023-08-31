@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductNameInfo.scss';
 
@@ -63,11 +63,11 @@ const ProductNameInfo = ({ productDetailData }) => {
   const goToCart = () => {
     if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
-      fetch('http://10.58.52.244:3000/carts/addcart', {
+      fetch('http://10.58.52.122/carts/usercart', {
         method: 'Post',
         headers: {
           authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzMjkzMjM1LCJleHAiOjE2OTQxNTcyMzV9.LNetoMh3OgByppYadsnn8YOew6S9chO47kzaQOzQiG0',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDcyMDcxLCJleHAiOjE2OTQzMzYwNzF9.92p7xPpmfq94AFpAuiQKP-uSzvNBZp1usxc7tgp4ix4',
           'Content-Type': 'application/json;charset=utf-8',
         },
         body: JSON.stringify({
@@ -81,7 +81,6 @@ const ProductNameInfo = ({ productDetailData }) => {
         });
     }
   };
-  console.log(id, productCount);
 
   return (
     <div key={id} className="productNameInfo">
@@ -133,7 +132,7 @@ const ProductNameInfo = ({ productDetailData }) => {
               likeHandling();
               setLike(prev => !prev);
             }}
-            src={isLiked ? 'images/full-heart.png' : 'images/heart.png'}
+            src={isLiked ? '/images/full-heart.png' : '/images/heart.png'}
             alt="찜하기 버튼"
           />
         </div>
@@ -149,16 +148,16 @@ const ProductNameInfo = ({ productDetailData }) => {
       </div>
       <div className="productRelated">
         <div className="productDeliveryFee">
-          <img src="images/delivery-truck.png" alt="배송 아이콘" />
+          <img src="/images/delivery-truck.png" alt="배송 아이콘" />
           <p>배송비 : 10만원 이상 무료</p>
           <button>자세히</button>
         </div>
         <div className="productShopInfo">
-          <img src="images/shop.png" alt="매장 아이콘" />
+          <img src="/images/shop.png" alt="매장 아이콘" />
           <p>매장 정보</p>
         </div>
         <div className="productAssembly">
-          <img src="images/diy.png" alt="조립 서비스 아이콘" />
+          <img src="/images/diy.png" alt="조립 서비스 아이콘" />
           <p>조립 서비스</p>
           <div className={assembly ? 'green' : 'red'} />
         </div>
@@ -172,14 +171,14 @@ const ProductNameInfo = ({ productDetailData }) => {
               onClick={handleDecrease}
               disabled={productCount <= MIN_PRODUCT_COUNT}
             >
-              <img src="images/decrease.png" alt="마이너스 아이콘" />
+              <img src="/images/decrease.png" alt="마이너스 아이콘" />
             </button>
             <button
               className="productQuantityPlus"
               onClick={handleIncrease}
               disabled={productCount >= MAX_PRODUCT_COUNT}
             >
-              <img src="images/increase.png" alt="플러스 아이콘" />
+              <img src="/images/increase.png" alt="플러스 아이콘" />
             </button>
           </div>
           <div className="productAll">
@@ -190,11 +189,11 @@ const ProductNameInfo = ({ productDetailData }) => {
         </div>
         <div className="productOrderButton">
           <button className="productDirectOrder" onClick={goToPayment}>
-            <img src="images/check-white.png" alt="바로구매 아이콘" />
+            <img src="/images/check-white.png" alt="바로구매 아이콘" />
             <p>바로구매</p>
           </button>
           <button className="productCart" onClick={goToCart}>
-            <img src="images/add-to-cart-white.png" alt="장바구니 아이콘" />
+            <img src="/images/add-to-cart-white.png" alt="장바구니 아이콘" />
             <p>장바구니</p>
           </button>
         </div>
