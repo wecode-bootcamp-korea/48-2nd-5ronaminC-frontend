@@ -47,7 +47,7 @@ const Nav = () => {
       <div className="firstLine">
         <img
           className="logo"
-          src="https://www.ikea.com/kr/ko/static/ikea-logo.f7d9229f806b59ec64cb.svg"
+          src="/images/5KEA-logo.jpg"
           alt="5KEA"
           onClick={goToMain}
         />
