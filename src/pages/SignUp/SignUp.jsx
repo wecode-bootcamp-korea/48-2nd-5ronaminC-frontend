@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 import Radio from './components/Radio/Radio';
-import { INPUT_RADIO_DATA, INPUT_GUIDE_DATA } from './InputData';
+import { INPUT_RADIO_DATA, INPUT_GUIDE_DATA } from './inputData';
 import './SignUp.scss';
 
 const SignUp = () => {
@@ -17,51 +17,22 @@ const SignUp = () => {
     gender: '',
     postCode: '',
     address: '',
-    preferredStoreId: 0,
+    preferredStoreId: 1,
   });
+
   const handleInput = e => {
     const { name, value } = e.target;
     setSignUserInfoData({ ...signupUserInfo, [name]: value });
   };
 
-  const NameChangeToNumber = preferredStoreName => {
-    switch (preferredStoreName) {
-      case '광명점':
-        return 1;
-        break;
-      case '고양점':
-        return 2;
-        break;
-      case '기흥점':
-        return 3;
-        break;
-      case '동부산':
-        return 4;
-        break;
-      default:
-        return 5;
-    }
-  };
-
   const signup = () => {
     console.log(signupUserInfo);
-
     fetch('http://10.58.52.71:3000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        email: signupUserInfo.email,
-        password: signupUserInfo.password,
-        username: signupUserInfo.username,
-        birthdate: signupUserInfo.birthdate,
-        phoneNumber: signupUserInfo.phoneNumber,
-        gender: signupUserInfo.gender,
-        postCode: signupUserInfo.postCode,
-        address: signupUserInfo.address,
-        preferredStoreId: NameChangeToNumber(signupUserInfo.preferredStoreId),
-      }),
+      body: JSON.stringify(signupUserInfo),
     })
       .then(response => response.json())
       .then(result => {
@@ -133,7 +104,6 @@ const SignUp = () => {
                 type={el.type}
                 placeholder={el.placeholder}
                 maxLength={el.maxLength}
-                // handleChange={handleInput}
               />
               {idx === 4 && (
                 <div className="gender wrap">
@@ -144,7 +114,7 @@ const SignUp = () => {
                         key={el.id}
                         name={el.name}
                         title={el.title}
-                        // onChange={handleInput}
+                        radioId={el.title}
                       />
                     ))}
                   </ul>
@@ -161,7 +131,7 @@ const SignUp = () => {
                   key={el.id}
                   name={el.name}
                   title={el.title}
-                  // onChange={handleInput}
+                  radioId={el.id}
                 />
               ))}
             </ul>

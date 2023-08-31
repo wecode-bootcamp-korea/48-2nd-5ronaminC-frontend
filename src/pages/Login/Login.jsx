@@ -12,19 +12,10 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // const goToMain = () => {
-  //   // navigate('/main');
-  //   if (validation) {
-  //     navigate('/main');
-  //   } else {
-  //     alert('입력한 값을 확인해주세요!');
-  //   }
-  // };
-
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('http://10.58.52.136:3000/users/signin', {
+    fetch('http://10.58.52.71:3000/users/signin', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -65,10 +56,7 @@ const Login = () => {
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   const validation =
-    emailRegex.test(userInfo.email) && passwordRegex.test(userInfo.password);
-
-  // const validation =
-  //   userInfo.userId.includes('@') && userInfo.userPw.length >= 8;
+    emailRegex.test(userInfo.userId) && passwordRegex.test(userInfo.userPw);
 
   return (
     <div className="loginMain">
