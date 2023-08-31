@@ -1,34 +1,36 @@
 @import '/src/style/variables.scss';
 @import '/src/pages/Login/Font.scss';
 
-.buttonComponent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
+.loginMain {
+  .buttonComponent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
 
-  border-radius: 50px;
-  border: none;
-  padding: 17px 0;
+    border-radius: 50px;
+    border: none;
+    padding: 17px 0;
 
-  background-color: $blue;
-  color: white;
+    background-color: $blue;
+    color: white;
 
-  &:disabled {
-    background-color: rgb(226, 226, 226);
-    color: $lightGray;
+    &:disabled {
+      background-color: rgb(226, 226, 226);
+      color: $lightGray;
+    }
+
+    @include buttonText;
   }
 
-  @include buttonText;
-}
+  .blue {
+    background-color: $blue;
+    color: white;
+  }
 
-.blue {
-  background-color: $blue;
-  color: white;
-}
-
-.white {
-  border: 1px solid $black;
-  background-color: white;
-  color: $black;
+  .white {
+    border: 1px solid $black;
+    background-color: white;
+    color: $black;
+  }
 }
