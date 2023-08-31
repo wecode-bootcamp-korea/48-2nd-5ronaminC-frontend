@@ -13,10 +13,11 @@ const Main = () => {
   const goToProductDetail = id => {
     navigate(`/products/showproductdetail/${id}`);
   };
-  useEffect(() => {
+
+  const getCategory = () => {
     fetch(
-      // '/data/categoryData.json',
-      `http://10.58.52.122:3000/showroom/category`,
+      '/data/categoryData.json',
+      // `http://10.58.52.122:3000/showroom/category`,
 
       {
         method: 'GET',
@@ -32,12 +33,12 @@ const Main = () => {
       .then(result => {
         setCategoryData(result.data);
       });
-  }, []);
+  };
 
-  useEffect(() => {
+  const getShowroomData = () => {
     fetch(
-      // `/data/showroomData${showroomId}.json`,
-      `http://10.58.52.122:3000/showroom/?spaceCategoryId=${showroomId}`,
+      `/data/showroomData${showroomId}.json`,
+      // `http://10.58.52.122:3000/showroom/?spaceCategoryId=${showroomId}`,
 
       {
         method: 'GET',
@@ -54,6 +55,14 @@ const Main = () => {
         setShowroomData(result.data.showroom);
         setProductsData(result.data.products);
       });
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  useEffect(() => {
+    getShowroomData();
   }, [showroomId]);
 
   return (
