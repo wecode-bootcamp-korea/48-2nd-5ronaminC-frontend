@@ -1,13 +1,13 @@
 @import '/src/style/variables.scss';
 @import '/src/pages/Login/Font.scss';
 
-.main {
+.loginMain {
   width: 100vw;
   height: 100vh;
   display: flex;
 }
 
-.left {
+.loginMainLeft {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@
   }
 }
 
-.right {
+.loginMainRight {
   width: 100%;
   height: 100%;
   display: flex;
