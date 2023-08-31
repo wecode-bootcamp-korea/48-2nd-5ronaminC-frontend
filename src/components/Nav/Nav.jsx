@@ -30,7 +30,7 @@ const Nav = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        // authorization: '토큰',
+        authorization: localStorage.getItem('TOKEN'),
       },
     })
       .then(res => res.json())
