@@ -9,19 +9,40 @@ const UserInfoList = ({ userInfoData }) => {
   const [isUserCheck, setUserCheck] = useState(false);
   const [isAddressCheck, setAddressCheck] = useState(false);
 
+  const arrproductId = userInfoData.map(num => {
+    return num.productId;
+  });
+  console.log(arrproductId);
+
+  const arrproductQuantity = userInfoData.map(num => {
+    return num.productQuantity;
+  });
+  console.log(arrproductQuantity);
+
+  const arrsubtotalPrice = userInfoData.map(num => {
+    return num.subtotalPrice;
+  });
+  console.log(arrsubtotalPrice);
+
   const CompletePayment = id => {
-    fetch('API', {
+    fetch('http://10.58.52.57:3000/orders/payment', {
       method: 'Post',
       headers: {
-        authorization: '',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMzk1MTQwLCJleHAiOjE2OTQyNTkxNDB9.2XCsXPoHpUYGDNxN9N1M4jEvcuwgp0kve-62L9t7nh4',
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({ productId: id }),
+      body: JSON.stringify({
+        productId: arrproductId,
+        productQuantity: arrproductQuantity,
+        subtotalPrice: arrsubtotalPrice,
+        totalProductPrice: id[0].totalProductPrice,
+      }),
     })
       .then(res => {
-        if (res.message === 200) {
+        if (res.message === '결제 완료') {
           alert('결제 완료');
-        } else if (res.message === 403) {
+        } else if (res.message === '잔액 부족') {
           alert('잔액 부족');
           return res.json();
         }
@@ -121,7 +142,7 @@ const UserInfoList = ({ userInfoData }) => {
             <div className="pointCheck">
               <div className="pointCheckList">
                 <p className="pointCheckToggleName">나의 포인트 :</p>
-                <p className="point">{userInfoData.point}</p>
+                {/*<p className="point">{parseInt(userInfoData[0].point)}</p>*/}
                 <p className="pointUnit">p</p>
               </div>
               <div className="goToCart">
@@ -132,7 +153,7 @@ const UserInfoList = ({ userInfoData }) => {
               </div>
             </div>
             <div className="orderButton">
-              <button onClick={() => CompletePayment(userInfoData.productId)}>
+              <button onClick={() => CompletePayment(userInfoData)}>
                 <img src="images/check-white.png" alt="결제 결정 버튼" />
                 <p>결제하기</p>
               </button>
