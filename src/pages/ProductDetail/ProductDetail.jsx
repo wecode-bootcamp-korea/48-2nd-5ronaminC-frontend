@@ -55,7 +55,7 @@ const ProductDetail = () => {
         <div className="productImages">
           <ProductImages
             key={productDetailData.id}
-            productImages={productDetailData.imageUrl}
+            productImages={productDetailData.imageUrl.split(',')}
           />
         </div>
         <div className="productDetail">
