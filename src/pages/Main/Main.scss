@@ -49,129 +49,127 @@
       }
     }
   }
-}
 
-@media (max-width: 1440px) {
+  @media (max-width: 1440px) {
+    .showRoomContainer {
+      width: 1100px;
+    }
+  }
+
   .showRoomContainer {
-    width: 1100px;
-  }
-}
+    position: relative;
+    max-width: 1400px;
 
-.showRoomContainer {
-  position: relative;
-  max-width: 1400px;
-
-  .imageContainer {
-    border-radius: 1rem;
-
-    img {
-      width: 100%;
-      object-fit: cover;
+    .imageContainer {
       border-radius: 1rem;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
     }
   }
-}
 
-.listWireframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  li {
-    padding: 0;
-    width: 2rem;
-    height: 2rem;
-    border: 2px solid transparent;
+  .listWireframe {
     position: absolute;
-    background: rgba(var(--colour-static-black, 17, 17, 17), 0.2);
-    border-radius: 1rem;
-    line-height: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-    transform: translateX(-1rem) translateY(-1rem) scale(0.999);
-    z-index: 999;
-
-    &:hover .productDetailToggle {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .productDetailToggle {
-      display: flex;
-      justify-content: space-between;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 1s;
-
+    li {
+      padding: 0;
+      width: 2rem;
+      height: 2rem;
+      border: 2px solid transparent;
       position: absolute;
-      left: 3rem;
-      background-color: rgb(var(--colour-neutral-1, 255, 255, 255));
-      min-width: 8.4375rem;
-      max-width: 11.25rem;
-      padding: 1rem 1rem 1.2rem 1rem;
+      background: rgba(var(--colour-static-black, 17, 17, 17), 0.2);
       border-radius: 1rem;
-      border: 1px solid $lightGray;
+      line-height: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      z-index: 99999;
+      transform: translateX(-1rem) translateY(-1rem) scale(0.999);
+      z-index: 999;
 
-      .info {
-        display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
+      &:hover .productDetailToggle {
+        opacity: 1;
+        pointer-events: auto;
       }
 
-      .goButton {
+      .productDetailToggle {
         display: flex;
-        align-items: center;
+        justify-content: space-between;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 1s;
 
-        img {
-          width: 1rem;
+        position: absolute;
+        left: 3rem;
+        background-color: rgb(var(--colour-neutral-1, 255, 255, 255));
+        min-width: 8.4375rem;
+        max-width: 11.25rem;
+        padding: 1rem 1rem 1.2rem 1rem;
+        border-radius: 1rem;
+        border: 1px solid $lightGray;
+
+        z-index: 99999;
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.1rem;
+        }
+
+        .goButton {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 1rem;
+          }
+        }
+
+        .isNew {
+          font-family: inherit;
+          font-size: 0.875rem;
+          line-height: 1.571;
+          font-weight: 700;
+          color: #ca5008;
+        }
+
+        .productName,
+        .categoryTypeName,
+        .price {
+          @include bodyText;
+        }
+        .productName {
+          font-weight: 600;
+          font-size: 1rem;
+          line-height: 1.8;
+        }
+
+        .price {
+          font-size: 1.2rem;
+          font-weight: 700;
         }
       }
 
-      .isNew {
-        font-family: inherit;
-        font-size: 0.875rem;
-        line-height: 1.571;
-        font-weight: 700;
-        color: #ca5008;
+      .dot {
+        transition: transform 250ms ease-in-out;
+        position: relative;
+        display: block;
+        background: white;
+        box-shadow: 0 1px 4px rgba(var(--colour-static-black, 17, 17, 17), 0.55);
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 1rem;
       }
-
-      .productName,
-      .categoryTypeName,
-      .price {
-        @include bodyText;
-      }
-      .productName {
-        font-weight: 600;
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-
-      .price {
-        font-size: 1.2rem;
-        font-weight: 700;
-      }
-    }
-
-    .dot {
-      transition: transform 250ms ease-in-out;
-      position: relative;
-      display: block;
-      background: white;
-      box-shadow: 0 1px 4px rgba(var(--colour-static-black, 17, 17, 17), 0.55);
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: 1rem;
     }
   }
-}
 
-.mainContainer {
   .serviceContainer {
     width: 100%;
     height: auto;
