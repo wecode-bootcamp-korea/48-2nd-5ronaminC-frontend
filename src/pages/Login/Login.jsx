@@ -59,13 +59,20 @@ const Login = () => {
     const { value, name } = event.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
+  const emailRegex =
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   const validation =
-    userInfo.userId.includes('@') && userInfo.userPw.length >= 8;
+    emailRegex.test(userInfo.email) && passwordRegex.test(userInfo.password);
+
+  // const validation =
+  //   userInfo.userId.includes('@') && userInfo.userPw.length >= 8;
 
   return (
-    <div className="main">
-      <div className="left">
+    <div className="loginMain">
+      <div className="loginMainLeft">
         <div className="logo">
           <img
             src="https://kr.accounts.ikea.com/resources/static/logo.svg"
@@ -92,7 +99,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="right">
+      <div className="loginMainRight">
         <form className="userInput">
           <Input
             name="userId"

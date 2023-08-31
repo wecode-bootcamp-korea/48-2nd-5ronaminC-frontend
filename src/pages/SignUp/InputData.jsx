@@ -8,16 +8,16 @@ const INPUT_RADIO_DATA = {
     { id: 2, name: 'gender', title: '여자' },
     { id: 3, name: 'gender', title: '응답안함' },
   ],
-  favoriteStore: [
+  preferredStoreId: [
     {
       id: 1,
-      name: 'market',
+      name: 'preferredStoreId',
       title: '광명점',
     },
-    { id: 2, name: 'market', title: '고양점' },
-    { id: 3, name: 'market', title: '기흥점' },
-    { id: 4, name: 'market', title: '동부산' },
-    { id: 5, name: 'market', title: '선택안함' },
+    { id: 2, name: 'preferredStoreId', title: '고양점' },
+    { id: 3, name: 'preferredStoreId', title: '기흥점' },
+    { id: 4, name: 'preferredStoreId', title: '동부산' },
+    { id: 5, name: 'preferredStoreId', title: '선택안함' },
   ],
 };
 
@@ -39,14 +39,14 @@ const INPUT_GUIDE_DATA = {
     },
     {
       id: 3,
-      className: 'name',
+      className: 'username',
       title: '이름',
       type: 'text',
       placeholder: '오케아',
     },
     {
       id: 4,
-      className: 'birthday',
+      className: 'birthdate',
       title: '생년월일',
       type: 'text',
       placeholder: '20230513',
@@ -62,7 +62,7 @@ const INPUT_GUIDE_DATA = {
     },
     {
       id: 6,
-      className: 'addressNumber',
+      className: 'postCode',
       title: '우편번호',
       type: 'number',
       placeholder: '00000(5자리)',
@@ -70,7 +70,7 @@ const INPUT_GUIDE_DATA = {
     },
     {
       id: 7,
-      className: 'detailAddress',
+      className: 'address',
       title: '상세주소',
       type: 'text',
       placeholder: '이케아아파트 101동 101호',

@@ -11,23 +11,42 @@ const SignUp = () => {
   const [signupUserInfo, setSignUserInfoData] = useState({
     email: '',
     password: '',
-    name: '',
-    birthday: '',
+    username: '',
+    birthdate: '',
     phoneNumber: '',
     gender: '',
-    addressNumber: '',
-    detailAddress: '',
-    favoriteStore: '',
+    postCode: '',
+    address: '',
+    preferredStoreId: 0,
   });
-
   const handleInput = e => {
     const { name, value } = e.target;
-
     setSignUserInfoData({ ...signupUserInfo, [name]: value });
   };
 
+  const NameChangeToNumber = preferredStoreName => {
+    switch (preferredStoreName) {
+      case '광명점':
+        return 1;
+        break;
+      case '고양점':
+        return 2;
+        break;
+      case '기흥점':
+        return 3;
+        break;
+      case '동부산':
+        return 4;
+        break;
+      default:
+        return 5;
+    }
+  };
+
   const signup = () => {
-    fetch('주소', {
+    console.log(signupUserInfo);
+
+    fetch('http://10.58.52.71:3000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -35,28 +54,43 @@ const SignUp = () => {
       body: JSON.stringify({
         email: signupUserInfo.email,
         password: signupUserInfo.password,
-        name: signupUserInfo.name,
-        birthday: signupUserInfo.birthday,
+        username: signupUserInfo.username,
+        birthdate: signupUserInfo.birthdate,
         phoneNumber: signupUserInfo.phoneNumber,
         gender: signupUserInfo.gender,
-        addressNumber: signupUserInfo.addressNumber,
-        detailAddress: signupUserInfo.detailAddress,
-        favoriteStore: signupUserInfo.favoriteStore,
+        postCode: signupUserInfo.postCode,
+        address: signupUserInfo.address,
+        preferredStoreId: NameChangeToNumber(signupUserInfo.preferredStoreId),
       }),
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'SUCCESS') {
+        if (result.message === 'user is created') {
           alert('회원가입 성공!');
+          navigate('/main');
         } else {
           alert('회원가입 양식이 틀립니다.');
         }
       });
   };
+  const emailRegex =
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+  const passwordRegex =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+  const birthdateRegex = /^[0-9]{8}$/;
+  const phoneNumberRegex = /^[0-9]{11}$/;
+  const postCodeRegex = /^[0-9]{5}$/;
+
+  const validation =
+    emailRegex.test(signupUserInfo.email) &&
+    passwordRegex.test(signupUserInfo.password) &&
+    birthdateRegex.test(signupUserInfo.birthdate) &&
+    phoneNumberRegex.test(signupUserInfo.phoneNumber) &&
+    postCodeRegex.test(signupUserInfo.postCode);
 
   return (
-    <div className="main">
-      <div className="left">
+    <div className="signUpMain">
+      <div className="signUpMainLeft">
         <div className="logo">
           <img
             src="https://kr.accounts.ikea.com/resources/static/logo.svg"
@@ -68,7 +102,7 @@ const SignUp = () => {
           <div className="description">
             <p>이케아 패밀리가 되어 다양한 쇼룸을 만나보세요!</p>
             <span>이미 이케아 패밀리신가요?</span>
-            <span className="goToLogin" onClick={() => navigate('/')}>
+            <span className="goToLogin" onClick={() => navigate('/login')}>
               로그인하기
             </span>
           </div>
@@ -89,7 +123,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <div className="right">
+      <div className="signUpMainRight">
         <form className="userInput" onChange={handleInput}>
           {INPUT_GUIDE_DATA.first.map((el, idx) => (
             <React.Fragment key={el.id}>
@@ -119,10 +153,10 @@ const SignUp = () => {
             </React.Fragment>
           ))}
 
-          <div className="favoriteStore wrap">
+          <div className="preferredStoreId wrap">
             <label>선호매장</label>
             <ul className="radioWrap">
-              {INPUT_RADIO_DATA.favoriteStore.map(el => (
+              {INPUT_RADIO_DATA.preferredStoreId.map(el => (
                 <Radio
                   key={el.id}
                   name={el.name}
@@ -134,7 +168,12 @@ const SignUp = () => {
           </div>
 
           <div className="buttonWrap wrap">
-            <Button name="회원가입 완료" buttonStyle="blue" onClick={signup} />
+            <Button
+              name="회원가입 완료"
+              buttonStyle="blue"
+              onClick={signup}
+              validation={validation}
+            />
           </div>
         </form>
       </div>
