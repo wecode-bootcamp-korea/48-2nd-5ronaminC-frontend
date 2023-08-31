@@ -1,0 +1,46 @@
+@import '/src/style/variables.scss';
+
+.payment {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 0 3rem;
+  margin-top: 5%;
+
+  .paymentAll {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-right: 5%;
+
+    .paymentHeadName {
+      width: 100%;
+
+      h1 {
+        display: inline-block;
+        font-size: 2.25rem;
+        color: $black;
+        line-height: 1.333;
+        letter-spacing: -0.0063em;
+        margin-bottom: 5%;
+      }
+
+      img {
+        width: 2.5rem;
+        height: 2.8rem;
+        margin-left: 3%;
+        transform: translateY(20%);
+      }
+    }
+
+    .UserInfoList {
+      display: flex;
+    }
+  }
+
+  .paymentProductPrice {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+}

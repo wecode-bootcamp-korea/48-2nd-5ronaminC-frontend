@@ -1,0 +1,87 @@
+@import '/src/style/variables.scss';
+
+.cartListAll {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .cartListRow {
+    display: flex;
+    margin-top: 3%;
+    border-bottom: 1px solid lightGray;
+
+    .cartImg {
+      width: 7rem;
+
+      img {
+        width: 5rem;
+        height: 5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .cartListInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 60%;
+
+      .cartListProductName {
+        color: $black;
+        font-weight: 600;
+        font-size: 1rem;
+        padding-bottom: 2%;
+      }
+
+      .cartlistInfoDetail {
+        display: flex;
+        font-size: 0.8rem;
+        color: $superDeepGray;
+        padding-bottom: 2%;
+
+        .cartListProducDetail {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .cartListProducLength {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+    .productlistInfoRight {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding-bottom: 5%;
+
+      .productlistPrice {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-end;
+        font-weight: 600;
+
+        .productlistMoney {
+          font-size: 1rem;
+          color: $black;
+        }
+
+        .productlistUnit {
+          margin-left: 5%;
+          font-size: 0.8rem;
+          color: $superDeepGray;
+        }
+      }
+      .productlistQuantity {
+        p {
+          font-size: 0.8rem;
+          color: $superDeepGray;
+          padding-bottom: 5%;
+        }
+      }
+    }
+  }
+}
