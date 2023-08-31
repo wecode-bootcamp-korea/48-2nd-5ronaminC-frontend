@@ -9,13 +9,14 @@ const UserInfoList = ({ userInfoData }) => {
   const [isUserCheck, setUserCheck] = useState(false);
   const [isAddressCheck, setAddressCheck] = useState(false);
 
-  const CompletePayment = () => {
+  const CompletePayment = id => {
     fetch('API', {
       method: 'Post',
       headers: {
         authorization: '',
         'Content-Type': 'application/json;charset=utf-8',
       },
+      body: JSON.stringify({ productId: id }),
     })
       .then(res => {
         if (res.message === 200) {
@@ -131,7 +132,7 @@ const UserInfoList = ({ userInfoData }) => {
               </div>
             </div>
             <div className="orderButton">
-              <button onClick={CompletePayment}>
+              <button onClick={() => CompletePayment(userInfoData.productId)}>
                 <img src="images/check-white.png" alt="결제 결정 버튼" />
                 <p>결제하기</p>
               </button>
