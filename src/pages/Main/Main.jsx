@@ -16,8 +16,8 @@ const Main = () => {
 
   useEffect(() => {
     fetch(
-      '/data/categoryData.json',
-      // `http://10.58.52.71:3000/main/category`,
+      // '/data/categoryData.json',
+      `http://10.58.52.71:3000/showroom/category`,
       {
         method: 'GET',
         headers: {
@@ -34,8 +34,8 @@ const Main = () => {
 
   useEffect(() => {
     fetch(
-      `/data/showroomData${showroomId}.json`,
-      // `http://10.58.52.71:3000/main/?mainId=${showroomId}`,
+      // `/data/showroomData${showroomId}.json`,
+      `http://10.58.52.71:3000/showroom/?spaceCategoryId=${showroomId}`,
 
       {
         method: 'GET',
