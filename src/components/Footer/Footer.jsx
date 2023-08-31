@@ -10,7 +10,7 @@ const Footer = () => {
 
   if (isExceptionPath) return null;
 
-  return <>나는 footer</>;
+  return <div className="footerContainer" />;
 };
 
 export default Footer;

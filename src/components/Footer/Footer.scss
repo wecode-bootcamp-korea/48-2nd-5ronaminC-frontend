@@ -1,0 +1,8 @@
+@import '/src/style/variables.scss';
+@import '/src/pages/Main/Font.scss';
+
+.footerContainer {
+  width: 100%;
+  height: 100px;
+  background-color: $footerBackgroundColor;
+}
