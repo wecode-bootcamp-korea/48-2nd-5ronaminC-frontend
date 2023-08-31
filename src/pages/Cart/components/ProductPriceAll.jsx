@@ -15,21 +15,8 @@ const ProductPriceAll = ({ cartProductData }) => {
   const goToPayment = () => {
     if (window.confirm('결제로 이동하시겠습니까?')) {
       navigate('/payment');
-      fetch('API', {
-        method: 'Post',
-        headers: {
-          authorization: '',
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        //body: JSON.stringify({userId,}),
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-        });
     }
   };
-  // console.log(userId);
 
   return (
     <div className="productPriceInfo">
