@@ -3,9 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { NAV_DATA } from './NavData';
 import './Nav.scss';
 
+const EXCEPTION_PATH = ['/login', '/signup'];
+
 const Nav = () => {
   const { pathname } = useLocation();
-  const EXCEPTION_PATH = ['/login', '/signup'];
   const isExceptionPath = EXCEPTION_PATH.some(path => path === pathname);
 
   const [userData, setUserData] = useState({});
