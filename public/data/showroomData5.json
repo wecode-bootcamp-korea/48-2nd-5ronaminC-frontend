@@ -1,0 +1,71 @@
+{
+  "data": {
+    "showroom": {
+      "id": 5,
+      "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/264502223-38aaadd7-8ace-4b49-b273-b8d0b57fec31.jpg",
+      "categorySpaceName": "화장실"
+    },
+    "products": [
+      {
+        "id": 2,
+        "productName": "피카츄",
+        "price": 50000,
+        "description": "백만볼트",
+        "categorySpaceName": "화장실",
+        "coordinateX": 904,
+        "coordinateY": 234,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 3,
+        "productName": "라이츄",
+        "price": 50000,
+        "description": "천만볼트",
+        "categorySpaceName": "화장실",
+        "coordinateX": 886,
+        "coordinateY": 584,
+        "categoryTypeName": "가구"
+      },
+      {
+        "id": 4,
+        "productName": "파이리",
+        "price": 100000,
+        "description": "화염",
+        "categorySpaceName": "화장실",
+        "coordinateX": 626,
+        "coordinateY": 369,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 5,
+        "productName": "야도란",
+        "price": 700000,
+        "description": "소라게",
+        "categorySpaceName": "화장실",
+        "coordinateX": 255,
+        "coordinateY": 636,
+        "categoryTypeName": "가전"
+      },
+      {
+        "id": 6,
+        "productName": "로켓단",
+        "price": 400000,
+        "description": "악당들",
+        "categorySpaceName": "화장실",
+        "coordinateX": 30,
+        "coordinateY": 40,
+        "categoryTypeName": "가구"
+      },
+      {
+        "id": 7,
+        "productName": "벤츠",
+        "price": 10000000,
+        "description": "프리미엄세단",
+        "categorySpaceName": "화장실",
+        "coordinateX": 40,
+        "coordinateY": 20,
+        "categoryTypeName": "가구"
+      }
+    ]
+  }
+}
