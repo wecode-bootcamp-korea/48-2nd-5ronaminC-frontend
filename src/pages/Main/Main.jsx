@@ -17,7 +17,7 @@ const Main = () => {
   useEffect(() => {
     fetch(
       '/data/categoryData.json',
-      // `http://10.58.52.206:3000/main/category`,
+      // `http://10.58.52.71:3000/main/category`,
       {
         method: 'GET',
         headers: {
@@ -35,7 +35,7 @@ const Main = () => {
   useEffect(() => {
     fetch(
       `/data/showroomData${showroomId}.json`,
-      // `http://10.58.52.206:3000/main/?mainId=${showroomId}`,
+      // `http://10.58.52.71:3000/main/?mainId=${showroomId}`,
 
       {
         method: 'GET',

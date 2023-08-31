@@ -1,69 +1,59 @@
 {
   "data": {
     "showroom": {
-      "id": 5,
-      "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/263655777-c26d3fc1-4f46-4e70-93bb-07d24adbd5e4.jpg",
-      "categorySpaceName": "화장실"
+      "id": 1,
+      "showroomImageUrl": "https://user-images.githubusercontent.com/77326740/264502291-7173eb9b-719c-4bf5-b9aa-110f9f794a3f.jpg",
+      "categorySpaceName": "거실"
     },
     "products": [
       {
         "id": 2,
-        "productName": "피카츄",
+        "productName": "3333",
         "price": 50000,
         "description": "백만볼트",
         "categorySpaceName": "화장실",
-        "coordinateX": 20,
-        "coordinateY": 30,
+        "coordinateX": 699,
+        "coordinateY": 290,
         "categoryTypeName": "가전"
       },
       {
         "id": 3,
-        "productName": "라이츄",
+        "productName": "5555",
         "price": 50000,
         "description": "천만볼트",
         "categorySpaceName": "화장실",
-        "coordinateX": 20,
-        "coordinateY": 30,
+        "coordinateX": 978,
+        "coordinateY": 326,
         "categoryTypeName": "가구"
       },
       {
         "id": 4,
-        "productName": "파이리",
+        "productName": "44444",
         "price": 100000,
         "description": "화염",
         "categorySpaceName": "화장실",
-        "coordinateX": 20,
-        "coordinateY": 30,
+        "coordinateX": 483,
+        "coordinateY": 181,
         "categoryTypeName": "가전"
       },
       {
         "id": 5,
-        "productName": "야도란",
+        "productName": "555",
         "price": 700000,
         "description": "소라게",
         "categorySpaceName": "화장실",
-        "coordinateX": 30,
-        "coordinateY": 40,
+        "coordinateX": 471,
+        "coordinateY": 442,
         "categoryTypeName": "가전"
       },
       {
         "id": 6,
-        "productName": "로켓단",
+        "productName": "6666",
         "price": 400000,
         "description": "악당들",
         "categorySpaceName": "화장실",
-        "coordinateX": 30,
-        "coordinateY": 40,
-        "categoryTypeName": "가구"
-      },
-      {
-        "id": 7,
-        "productName": "벤츠",
-        "price": 10000000,
-        "description": "프리미엄세단",
-        "categorySpaceName": "화장실",
-        "coordinateX": 40,
-        "coordinateY": 20,
+        "coordinateX": 386,
+        "coordinateY": 232,
         "categoryTypeName": "가구"
       }
     ]

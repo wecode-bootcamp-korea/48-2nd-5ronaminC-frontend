@@ -1,11 +1,13 @@
 import React from 'react';
 
 const Product = ({ product, goToProductDetail }) => {
+  const calculatePercentageX = x => Math.round((x / 1400) * 100);
+  const calculatePercentageY = y => Math.round((y / 700) * 100);
   return (
     <li
       style={{
-        top: `${product.coordinateX}%`,
-        left: `${product.coordinateY}%`,
+        top: `${calculatePercentageY(product.coordinateY)}%`,
+        left: `${calculatePercentageX(product.coordinateX)}%`,
       }}
       onClick={() => goToProductDetail(product.id)}
     >
