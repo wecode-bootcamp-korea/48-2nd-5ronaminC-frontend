@@ -38,6 +38,7 @@
         padding: 10px 24px;
         font-weight: 600;
         cursor: pointer;
+        white-space: nowrap;
 
         &:hover {
           background-color: $superLightGray;
@@ -53,6 +54,24 @@
   @media (max-width: 1440px) {
     .showRoomContainer {
       width: 1100px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .showRoomContainer {
+      width: 900px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .showRoomContainer {
+      width: 600px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .showRoomContainer {
+      width: 400px;
     }
   }
 
@@ -79,29 +98,34 @@
     height: 100%;
 
     li {
-      padding: 0;
-      width: 2rem;
-      height: 2rem;
-      border: 2px solid transparent;
-      position: absolute;
-      background: rgba(var(--colour-static-black, 17, 17, 17), 0.2);
-      border-radius: 1rem;
-      line-height: 0.5;
       display: flex;
       align-items: center;
       justify-content: center;
-
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 1rem;
+      background: rgba(var(--colour-static-black, 17, 17, 17), 0.2);
+      line-height: 0.5;
       transform: translateX(-1rem) translateY(-1rem) scale(0.999);
-      z-index: 999;
+      cursor: pointer;
+      z-index: 1;
 
-      &:hover .productDetailToggle {
-        opacity: 1;
-        pointer-events: auto;
+      &:hover {
+        z-index: 2;
+
+        .productDetailToggle {
+          opacity: 1;
+          pointer-events: auto;
+        }
       }
 
       .productDetailToggle {
         display: flex;
         justify-content: space-between;
+        gap: 1rem;
         opacity: 0;
         pointer-events: none;
         transition: all 1s;
@@ -114,8 +138,6 @@
         padding: 1rem 1rem 1.2rem 1rem;
         border-radius: 1rem;
         border: 1px solid $lightGray;
-
-        z-index: 99999;
 
         .info {
           display: flex;
@@ -144,6 +166,7 @@
         .categoryTypeName,
         .price {
           @include bodyText;
+          white-space: nowrap;
         }
         .productName {
           font-weight: 600;
@@ -159,7 +182,6 @@
 
       .dot {
         transition: transform 250ms ease-in-out;
-        position: relative;
         display: block;
         background: white;
         box-shadow: 0 1px 4px rgba(var(--colour-static-black, 17, 17, 17), 0.55);
@@ -219,6 +241,7 @@
         border-radius: 1rem;
         padding: 10px 24px;
         font-weight: 600;
+        white-space: nowrap;
       }
     }
   }

@@ -22,7 +22,7 @@
         "price": 50000,
         "description": "천만볼트",
         "categorySpaceName": "화장실",
-        "coordinateX": 978,
+        "coordinateX": 699,
         "coordinateY": 326,
         "categoryTypeName": "가구"
       },
@@ -32,8 +32,8 @@
         "price": 100000,
         "description": "화염",
         "categorySpaceName": "화장실",
-        "coordinateX": 483,
-        "coordinateY": 181,
+        "coordinateX": 800,
+        "coordinateY": 326,
         "categoryTypeName": "가전"
       },
       {
