@@ -11,18 +11,20 @@ const Main = () => {
   const [showroomId, setShowroomId] = useState(1);
   const navigate = useNavigate();
   const goToProductDetail = id => {
-    navigate(`/product-detail/${id}`);
+    navigate(`/products/showproductdetail/${id}`);
   };
-
   useEffect(() => {
     fetch(
-      '/data/categoryData.json',
-      // `http://10.58.52.71:3000/main/category`,
+      // '/data/categoryData.json',
+      `http://10.58.52.122:3000/showroom/category`,
+
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
-          authorization: localStorage.getItem('TOKEN'),
+          // authorization: localStorage.getItem('TOKEN'),
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
         },
       },
     )
@@ -34,14 +36,16 @@ const Main = () => {
 
   useEffect(() => {
     fetch(
-      `/data/showroomData${showroomId}.json`,
-      // `http://10.58.52.71:3000/main/?mainId=${showroomId}`,
+      // `/data/showroomData${showroomId}.json`,
+      `http://10.58.52.122:3000/showroom/?spaceCategoryId=${showroomId}`,
 
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
-          authorization: localStorage.getItem('TOKEN'),
+          // authorization: localStorage.getItem('TOKEN'),
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
         },
       },
     )
