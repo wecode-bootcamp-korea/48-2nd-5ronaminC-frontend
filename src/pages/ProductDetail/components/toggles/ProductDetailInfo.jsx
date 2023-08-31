@@ -27,10 +27,10 @@ const ProductDetailInfo = ({ productDetailData }) => {
           }}
         >
           {isSizeInfo ? (
-            <img src="images/chevron.png" alt="사이즈 정보 up 토글 버튼" />
+            <img src="/images/chevron.png" alt="사이즈 정보 up 토글 버튼" />
           ) : (
             <img
-              src="images/down-chevron.png"
+              src="/images/down-chevron.png"
               alt="사이즈 정보 down 토글 버튼"
             />
           )}
@@ -59,13 +59,13 @@ const ProductDetailInfo = ({ productDetailData }) => {
       <div className="assemblyMethod">
         <p>조립 방법</p>
         <button>
-          <img src="images/down-chevron.png" alt="조립 방법 토글 버튼" />
+          <img src="/images/down-chevron.png" alt="조립 방법 토글 버튼" />
         </button>
       </div>
       <div className="recoProduct">
         <p>추천 제품</p>
         <button>
-          <img src="images/down-chevron.png" alt="조립 방법 토글 버튼" />
+          <img src="/images/down-chevron.png" alt="조립 방법 토글 버튼" />
         </button>
       </div>
     </div>
