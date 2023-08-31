@@ -44,8 +44,14 @@ const SignUp = () => {
         favoriteStore: signupUserInfo.favoriteStore,
       }),
     })
-      .then(response => response.json)
-      .then(result => {});
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('회원가입 성공!');
+        } else {
+          alert('회원가입 양식이 틀립니다.');
+        }
+      });
   };
 
   return (
@@ -128,11 +134,7 @@ const SignUp = () => {
           </div>
 
           <div className="buttonWrap wrap">
-            <Button
-              name="회원가입 완료"
-              buttonStyle="blue"
-              // onClick={signup}s
-            />
+            <Button name="회원가입 완료" buttonStyle="blue" onClick={signup} />
           </div>
         </form>
       </div>
