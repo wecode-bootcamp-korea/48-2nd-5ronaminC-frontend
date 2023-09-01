@@ -142,7 +142,9 @@ const UserInfoList = ({ userInfoData, apiUrl }) => {
             <div className="pointCheck">
               <div className="pointCheckList">
                 <p className="pointCheckToggleName">나의 포인트 :</p>
-                <p className="point">{parseInt(userInfoData[0].point)}</p>
+                <p className="point">
+                  {Number(parseInt(userInfoData[0].point)).toLocaleString()}
+                </p>
                 <p className="pointUnit">p</p>
               </div>
               <div className="goToCart">

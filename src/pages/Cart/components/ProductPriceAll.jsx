@@ -34,14 +34,18 @@ const ProductPriceAll = ({ cartProductData }) => {
         <div className="productPriceInfoAmount">
           <p>상품 금액</p>
           <div className="InfoAmountRight">
-            <p className="InfoAmountCount">{totalProductPrice}</p>
+            <p className="InfoAmountCount">
+              {Number(totalProductPrice).toLocaleString()}
+            </p>
             <p>원</p>
           </div>
         </div>
         <div className="productPriceInfoDelivery">
           <p>배송비</p>
           <div className="InfoDeliveryRight">
-            <p className="InfoDeliveryCount">{shippingFee}</p>
+            <p className="InfoDeliveryCount">
+              {Number(shippingFee).toLocaleString()}
+            </p>
             <p>원</p>
           </div>
         </div>
@@ -49,7 +53,9 @@ const ProductPriceAll = ({ cartProductData }) => {
       <div className="productPriceInfoSum">
         <p>총 주문금액</p>
         <div className="InfoSumRight">
-          <p className="InfoSumCount">{totalOrderPrice}</p>
+          <p className="InfoSumCount">
+            {Number(totalOrderPrice).toLocaleString()}
+          </p>
           <p>원</p>
         </div>
       </div>

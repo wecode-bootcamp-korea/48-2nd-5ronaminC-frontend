@@ -80,7 +80,10 @@ const CartList = ({ cartListData, getCart, apiUrl }) => {
               </div>
               <div className="productlistInfoBottom">
                 <div className="productlistPrice">
-                  <p className="productlistMoney">{tab.subtotalPrice}</p>
+                  <p className="productlistMoney">
+                    {' '}
+                    {Number(tab.subtotalPrice).toLocaleString()}
+                  </p>
                   <p className="productlistUnit">원</p>
                 </div>
                 <div className="productlistButton">
