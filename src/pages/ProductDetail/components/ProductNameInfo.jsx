@@ -5,7 +5,7 @@ import './ProductNameInfo.scss';
 const MIN_PRODUCT_COUNT = 1;
 const MAX_PRODUCT_COUNT = 99;
 
-const ProductNameInfo = ({ productDetailData }) => {
+const ProductNameInfo = ({ productDetailData, apiUrl }) => {
   const {
     id,
     name,
@@ -49,7 +49,7 @@ const ProductNameInfo = ({ productDetailData }) => {
 
   //찜하기 통신 - post
   const likeHandling = () => {
-    fetch('API', {
+    fetch('api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -63,7 +63,7 @@ const ProductNameInfo = ({ productDetailData }) => {
   const goToCart = () => {
     if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
-      fetch('http://10.58.52.242:3000/carts/usercart', {
+      fetch(`${apiUrl}/carts/usercart`, {
         method: 'Post',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',

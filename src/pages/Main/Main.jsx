@@ -5,6 +5,7 @@ import Product from './components/Product';
 import './Main.scss';
 
 const Main = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [categoryData, setCategoryData] = useState([]);
   const [showroomData, setShowroomData] = useState([]);
   const [productsData, setProductsData] = useState([]);
@@ -16,16 +17,13 @@ const Main = () => {
 
   const getCategory = () => {
     fetch(
-      //'/data/categoryData.json',
-      `http://10.58.52.242:3000/showroom/category`,
+      `${apiUrl}/showroom/category`,
 
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
           authorization: localStorage.getItem('TOKEN'),
-          // authorization:
-          //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
         },
       },
     )
@@ -36,20 +34,13 @@ const Main = () => {
   };
 
   const getShowroomData = () => {
-    fetch(
-      //`/data/showroomData${showroomId}.json`,
-      `http://10.58.52.242:3000/showroom/?spaceCategoryId=${showroomId}`,
-
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          authorization: localStorage.getItem('TOKEN'),
-          // authorization:
-          //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
-        },
+    fetch(`${apiUrl}/showroom/?spaceCategoryId=${showroomId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: localStorage.getItem('TOKEN'),
       },
-    )
+    })
       .then(res => res.json())
       .then(result => {
         setShowroomData(result.data.showroom);

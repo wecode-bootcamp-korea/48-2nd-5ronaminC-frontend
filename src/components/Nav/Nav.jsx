@@ -106,13 +106,13 @@ const Nav = () => {
                 <div className="nameInfo">
                   <div className="storeName">고양점</div>
                   <div className="closedTimeInfo">폐점시간: 오후 8:00</div>
-                  <div className="address">주소</div>
+                  <div className="address">고양시 덕양구 권율대로 420</div>
                 </div>
                 <div className="timeInfo">
                   <div className="runTimeInfo">
                     정상영업시간: 오전 11:00 - 오후 9:00
                   </div>
-                  <div className="timeInfo">시간</div>
+                  <div className="timeInfo">휴무: 2023.09.12</div>
                 </div>
                 <div className="goToStorePageButton">
                   <button>상점 웹페이지 방문하기</button>

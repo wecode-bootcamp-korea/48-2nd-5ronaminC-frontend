@@ -5,6 +5,7 @@ import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 
 const Login = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [userInfo, setUserInfo] = useState({
     userId: '',
     userPw: '',
@@ -15,7 +16,7 @@ const Login = () => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('http://10.58.52.242:3000/users/signin', {
+    fetch(`${apiUrl}/users/signin`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

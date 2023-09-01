@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductReview.scss';
 
-const ProductReview = key => {
+const ProductReview = ({ key, apiUrl }) => {
   const [isPoductReview, setPoductReview] = useState(false);
   const [newReview, setNewReviewPost] = useState('');
   const [reviewData, setReviewData] = useState([]);
@@ -16,7 +16,7 @@ const ProductReview = key => {
 
   //상품평 작성 통신
   const reviewWrite = () => {
-    fetch(`http://10.58.52.242:3000/reviews/${id}`, {
+    fetch(`${apiUrl}/reviews/${id}`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -37,7 +37,7 @@ const ProductReview = key => {
 
   //상품평 리스트 보여주기만 통신
   useEffect(() => {
-    fetch(`http://10.58.52.242:3000/allreviewList/${id}`, {
+    fetch(`${apiUrl}/allreviewList/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

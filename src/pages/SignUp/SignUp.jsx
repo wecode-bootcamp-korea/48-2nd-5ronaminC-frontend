@@ -7,6 +7,7 @@ import { INPUT_RADIO_DATA, INPUT_GUIDE_DATA } from './inputData';
 import './SignUp.scss';
 
 const SignUp = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const [signupUserInfo, setSignUserInfoData] = useState({
     email: '',
@@ -26,8 +27,7 @@ const SignUp = () => {
   };
 
   const signup = () => {
-    console.log(signupUserInfo);
-    fetch('http://10.58.52.242:3000/users/signup', {
+    fetch(`${apiUrl}/users/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -38,7 +38,7 @@ const SignUp = () => {
       .then(result => {
         if (result.message === 'user is created') {
           alert('회원가입 성공!');
-          navigate('/main');
+          navigate('/');
         } else {
           alert('회원가입 양식이 틀립니다.');
         }

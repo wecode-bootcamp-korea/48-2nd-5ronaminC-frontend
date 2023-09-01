@@ -1,9 +1,9 @@
 import React from 'react';
 import './CartList.scss';
 
-const CartList = ({ cartListData, getCart }) => {
+const CartList = ({ cartListData, getCart, apiUrl }) => {
   const cartDeleting = item => {
-    fetch(`http://10.58.52.242:3000/carts/${item}`, {
+    fetch(`${apiUrl}/carts/${item}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

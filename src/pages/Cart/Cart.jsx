@@ -4,15 +4,15 @@ import ProductPriceAll from './components/ProductPriceAll';
 import './Cart.scss';
 
 const Cart = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [cartData, setCartData] = useState([]);
 
   const getCart = () => {
-    fetch('http://10.58.52.242:3000/carts', {
+    fetch(`${apiUrl}/carts`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization: localStorage.getItem('TOKEN'),
-        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
       },
     })
       .then(res => res.json())
@@ -26,9 +26,8 @@ const Cart = () => {
   useEffect(() => {
     getCart();
   }, []);
-  console.log('cartDadta 처음 불러올 떄', cartData);
 
-  // if (Object.keys(cartData).length === 0) return null;
+  if (Object.keys(cartData).length === 0) return null;
 
   return (
     <div className="cart">
@@ -46,7 +45,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="cartList">
-          <CartList cartListData={cartData} getCart={getCart} />
+          <CartList cartListData={cartData} getCart={getCart} apiUrl={apiUrl} />
         </div>
       </div>
       <div className="productPrice">

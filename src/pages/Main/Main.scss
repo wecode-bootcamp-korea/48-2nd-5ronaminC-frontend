@@ -134,7 +134,7 @@
         left: 3rem;
         background-color: rgb(var(--colour-neutral-1, 255, 255, 255));
         min-width: 8.4375rem;
-        max-width: 11.25rem;
+        // max-width: 13rem;
         padding: 1rem 1rem 1.2rem 1rem;
         border-radius: 1rem;
         border: 1px solid $lightGray;
@@ -168,6 +168,7 @@
           @include bodyText;
           white-space: nowrap;
         }
+
         .productName {
           font-weight: 600;
           font-size: 1rem;

@@ -4,15 +4,15 @@ import PaymentProductPrice from './components/PaymentProductPrice';
 import './Payment.scss';
 
 const Payment = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [paymentData, setPaymentData] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.52.242:3000/orders/information', {
+    fetch(`${apiUrl}/orders/information`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization: localStorage.getItem('TOKEN'),
-        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMzk1MTQwLCJleHAiOjE2OTQyNTkxNDB9.2XCsXPoHpUYGDNxN9N1M4jEvcuwgp0kve-62L9t7nh4',
       },
     })
       .then(res => res.json())
@@ -29,7 +29,7 @@ const Payment = () => {
           <img src="images/delivery-truck.png" alt="배송 아이콘" />
         </div>
         <div className="UserInfoList">
-          <UserInfoList userInfoData={paymentData} />
+          <UserInfoList userInfoData={paymentData} apiUrl={apiUrl} />
         </div>
       </div>
       <div className="paymentProductPrice">

@@ -7,17 +7,17 @@ import ProductNameInfo from './components/ProductNameInfo';
 import './ProductDetail.scss';
 
 const ProductDetail = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [productDetailData, setProductDetailData] = useState({});
   const [currentInfo, setCurrentInfo] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://10.58.52.242:3000/products/showproductdetail/${id}`, {
+    fetch(`${apiUrl}/products/showproductdetail/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization: localStorage.getItem('TOKEN'),
-        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
       },
     })
       .then(res => res.json())
@@ -37,13 +37,18 @@ const ProductDetail = () => {
       id: 2,
       title: '상품평',
       engTitle: 'review',
-      component: <ProductReview key={productDetailData.id} />,
+      component: <ProductReview key={productDetailData.id} apiUrl={apiUrl} />,
     },
     {
       id: 3,
       title: '제품 Q&A',
       engTitle: 'qna',
-      component: <ProductDetailInfo productDetailData={productDetailData} />,
+      component: (
+        <ProductDetailInfo
+          productDetailData={productDetailData}
+          apiUrl={apiUrl}
+        />
+      ),
     },
   ];
 
@@ -89,7 +94,10 @@ const ProductDetail = () => {
       </div>
       <div className="productNames">
         {DETAIL_TABS.find(tab => currentInfo === tab.engTitle)?.component || (
-          <ProductNameInfo productDetailData={productDetailData} />
+          <ProductNameInfo
+            productDetailData={productDetailData}
+            apiUrl={apiUrl}
+          />
         )}
       </div>
     </div>

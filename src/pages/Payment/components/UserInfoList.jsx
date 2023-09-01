@@ -4,7 +4,7 @@ import UserCheck from './toggles/UserCheck';
 import AddressCheck from './toggles/AddressCheck';
 import './UserInfoList.scss';
 
-const UserInfoList = ({ userInfoData }) => {
+const UserInfoList = ({ userInfoData, apiUrl }) => {
   const [isProductCheck, setProductCheck] = useState(false);
   const [isUserCheck, setUserCheck] = useState(false);
   const [isAddressCheck, setAddressCheck] = useState(false);
@@ -25,11 +25,10 @@ const UserInfoList = ({ userInfoData }) => {
   console.log(arrsubtotalPrice);
 
   const CompletePayment = id => {
-    fetch('http://10.58.52.242:3000/orders/payment', {
+    fetch(`${apiUrl}/orders/payment`, {
       method: 'Post',
       headers: {
         authorization: localStorage.getItem('TOKEN'),
-        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMzk1MTQwLCJleHAiOjE2OTQyNTkxNDB9.2XCsXPoHpUYGDNxN9N1M4jEvcuwgp0kve-62L9t7nh4',
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
@@ -41,17 +40,13 @@ const UserInfoList = ({ userInfoData }) => {
         point: id[0].point,
       }),
     })
-      .then(res => {
-        console.log(res);
-        if (res.message === '결제 완료') {
-          alert('결제 완료');
-        } else if (res.message === '잔액 부족') {
-          alert('잔액 부족');
-          return res.json();
-        }
-      })
+      .then(res => res.json())
       .then(result => {
-        console.log(result);
+        if (result.message === '결제 완료') {
+          alert('결제 완료');
+        } else if (result.message === '잔액 부족') {
+          alert('잔액 부족');
+        }
       });
   };
 
