@@ -12,12 +12,12 @@ const ProductDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://10.58.52.122:3000/products/showproductdetail/${id}`, {
+    fetch(`http://10.58.52.242:3000/products/showproductdetail/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
+        authorization: localStorage.getItem('TOKEN'),
+        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
       },
     })
       .then(res => res.json())

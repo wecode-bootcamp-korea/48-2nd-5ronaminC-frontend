@@ -25,11 +25,11 @@ const UserInfoList = ({ userInfoData }) => {
   console.log(arrsubtotalPrice);
 
   const CompletePayment = id => {
-    fetch('http://10.58.52.57:3000/orders/payment', {
+    fetch('http://10.58.56.242:3000/orders/payment', {
       method: 'Post',
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMzk1MTQwLCJleHAiOjE2OTQyNTkxNDB9.2XCsXPoHpUYGDNxN9N1M4jEvcuwgp0kve-62L9t7nh4',
+        authorization: localStorage.getItem('TOKEN'),
+        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMzk1MTQwLCJleHAiOjE2OTQyNTkxNDB9.2XCsXPoHpUYGDNxN9N1M4jEvcuwgp0kve-62L9t7nh4',
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
@@ -37,6 +37,8 @@ const UserInfoList = ({ userInfoData }) => {
         productQuantity: arrproductQuantity,
         subtotalPrice: arrsubtotalPrice,
         totalProductPrice: id[0].totalProductPrice,
+        totalOrderPrice: id[0].totalOrderPrice,
+        point: id[0].point,
       }),
     })
       .then(res => {
@@ -51,6 +53,8 @@ const UserInfoList = ({ userInfoData }) => {
         console.log(result);
       });
   };
+
+  if (Object.keys(userInfoData).length === 0) return null;
 
   return (
     <div className="userInfoList">
@@ -142,7 +146,7 @@ const UserInfoList = ({ userInfoData }) => {
             <div className="pointCheck">
               <div className="pointCheckList">
                 <p className="pointCheckToggleName">나의 포인트 :</p>
-                {/*<p className="point">{parseInt(userInfoData[0].point)}</p>*/}
+                <p className="point">{parseInt(userInfoData[0].point)}</p>
                 <p className="pointUnit">p</p>
               </div>
               <div className="goToCart">

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './ProductReview.scss';
 
 const ProductReview = key => {
   const [isPoductReview, setPoductReview] = useState(false);
   const [newReview, setNewReviewPost] = useState('');
   const [reviewData, setReviewData] = useState([]);
+  const { id } = useParams();
 
   const newReviewInput = event => {
     const { value } = event.target;
@@ -14,11 +16,12 @@ const ProductReview = key => {
 
   //상품평 작성 통신
   const reviewWrite = () => {
-    fetch('API', {
+    fetch(`http://10.58.52.242:3000/reviews/${id}`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '',
+        authorization: localStorage.getItem('TOKEN'),
+        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
       },
       body: JSON.stringify({
         key: key,
@@ -33,13 +36,13 @@ const ProductReview = key => {
   };
 
   //상품평 리스트 보여주기만 통신
-  /*
   useEffect(() => {
-    fetch('API', {
+    fetch(`http://10.58.52.242:3000/allreviewList/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '토큰',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
       },
     })
       .then(res => res.json())
@@ -51,7 +54,6 @@ const ProductReview = key => {
         setReviewData(sortedPosts);
       });
   }, []);
-  */
 
   return (
     <div className="productReview ">
@@ -76,7 +78,7 @@ const ProductReview = key => {
         <div className="poductReviewWrite">
           <div className="poductReviewWriteTitle">
             <p>상품평 작성</p>
-            <img src="images/rating.png" alt="상품평 아이콘" />
+            <img src="/images/rating.png" alt="상품평 아이콘" />
           </div>
           <div className="poductRevieText">
             <textarea

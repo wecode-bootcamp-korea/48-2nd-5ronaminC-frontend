@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './Footer.scss';
 
-const EXCEPTION_PATH = ['/login', '/signup'];
+const EXCEPTION_PATH = ['/', '/signup'];
 
 const Footer = () => {
   const { pathname } = useLocation();

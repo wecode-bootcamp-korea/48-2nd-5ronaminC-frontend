@@ -11,21 +11,21 @@ const Main = () => {
   const [showroomId, setShowroomId] = useState(1);
   const navigate = useNavigate();
   const goToProductDetail = id => {
-    navigate(`/products/showproductdetail/${id}`);
+    navigate(`/product-detail/${id}`);
   };
 
   const getCategory = () => {
     fetch(
-      '/data/categoryData.json',
-      // `http://10.58.52.122:3000/showroom/category`,
+      //'/data/categoryData.json',
+      `http://10.58.52.242:3000/showroom/category`,
 
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
-          // authorization: localStorage.getItem('TOKEN'),
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
+          authorization: localStorage.getItem('TOKEN'),
+          // authorization:
+          //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
         },
       },
     )
@@ -37,16 +37,16 @@ const Main = () => {
 
   const getShowroomData = () => {
     fetch(
-      `/data/showroomData${showroomId}.json`,
-      // `http://10.58.52.122:3000/showroom/?spaceCategoryId=${showroomId}`,
+      //`/data/showroomData${showroomId}.json`,
+      `http://10.58.52.242:3000/showroom/?spaceCategoryId=${showroomId}`,
 
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
-          // authorization: localStorage.getItem('TOKEN'),
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
+          authorization: localStorage.getItem('TOKEN'),
+          // authorization:
+          //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDc1MjE2LCJleHAiOjE2OTQzMzkyMTZ9.XTvAXEGBKGYG4kWjnHy6GWFSnlE0Bgdx3vADlgJH5TA',
         },
       },
     )
@@ -82,7 +82,7 @@ const Main = () => {
             </li>
           ))}
         </ul>
-        <div className="showRoomContainer" key={showroomData.id}>
+        <div className="showRoomContainer">
           <div className="imageContainer">
             <img
               src={showroomData.showroomImageUrl}

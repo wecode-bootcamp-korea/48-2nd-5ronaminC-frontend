@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { NAV_DATA } from './NavData';
 import './Nav.scss';
 
-const EXCEPTION_PATH = ['/login', '/signup'];
+const EXCEPTION_PATH = ['/', '/signup'];
 
 const Nav = () => {
   const { pathname } = useLocation();
@@ -15,7 +15,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const goToLogin = () => {
-    navigate('/login');
+    navigate('/');
   };
 
   const goToMain = () => {
@@ -66,7 +66,7 @@ const Nav = () => {
               onClick={goToCart}
             />
           </li>
-          <li>
+          <li onClick={goToLogin}>
             <img src="/images/user-white.png" alt="내 정보" />
           </li>
           <li>

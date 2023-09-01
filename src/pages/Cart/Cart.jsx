@@ -7,12 +7,12 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
 
   const getCart = () => {
-    fetch('http://10.58.52.224:3000/carts', {
+    fetch('http://10.58.56.242:3000/carts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
+        authorization: localStorage.getItem('TOKEN'),
+        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
       },
     })
       .then(res => res.json())
@@ -27,6 +27,8 @@ const Cart = () => {
     getCart();
   }, []);
   console.log('cartDadta 처음 불러올 떄', cartData);
+
+  // if (Object.keys(cartData).length === 0) return null;
 
   return (
     <div className="cart">

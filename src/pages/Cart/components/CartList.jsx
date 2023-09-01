@@ -3,12 +3,12 @@ import './CartList.scss';
 
 const CartList = ({ cartListData, getCart }) => {
   const cartDeleting = item => {
-    fetch(`http://10.58.52.224:3000/carts/${item}`, {
+    fetch(`http://10.58.56.242:3000/carts/${item}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
+        authorization: localStorage.getItem('TOKEN'),
+        // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjkzMjk1MDY4LCJleHAiOjE2OTQxNTkwNjh9.LwmqdR7O5xm2IYRozCPde4fB-JTNPCba971gNN_WGsM',
       },
     })
       .then(res => {

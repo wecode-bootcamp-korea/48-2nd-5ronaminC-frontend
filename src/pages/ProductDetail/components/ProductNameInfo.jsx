@@ -53,7 +53,7 @@ const ProductNameInfo = ({ productDetailData }) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization: '',
+        authorization: localStorage.getItem('TOKEN'),
       },
       body: JSON.stringify({ isLiked: like }),
     }).then(res => res.json());
@@ -63,12 +63,12 @@ const ProductNameInfo = ({ productDetailData }) => {
   const goToCart = () => {
     if (window.confirm('장바구니로 이동하시겠습니까?')) {
       navigate('/cart');
-      fetch('http://10.58.52.122/carts/usercart', {
+      fetch('http://10.58.52.242:3000/carts/usercart', {
         method: 'Post',
         headers: {
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjkzNDcyMDcxLCJleHAiOjE2OTQzMzYwNzF9.92p7xPpmfq94AFpAuiQKP-uSzvNBZp1usxc7tgp4ix4',
           'Content-Type': 'application/json;charset=utf-8',
+          authorization: localStorage.getItem('TOKEN'),
+          // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY5MzUzOTUxNSwiZXhwIjoxNjk0NDAzNTE1fQ.o3SxI61QNidq0Pg2ru4ZY4PuL94ZrQKJHYfAkGvKo9Q',
         },
         body: JSON.stringify({
           id,

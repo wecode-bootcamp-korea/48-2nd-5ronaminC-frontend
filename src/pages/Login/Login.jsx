@@ -15,7 +15,7 @@ const Login = () => {
   const goToMain = e => {
     e.preventDefault();
 
-    fetch('http://10.58.52.71:3000/users/signin', {
+    fetch('http://10.58.52.242:3000/users/signin', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -62,10 +62,7 @@ const Login = () => {
     <div className="loginMain">
       <div className="loginMainLeft">
         <div className="logo">
-          <img
-            src="https://kr.accounts.ikea.com/resources/static/logo.svg"
-            alt="5KEA logo"
-          />
+          <img src="/images/5KEA-logo.jpg" y alt="5KEA logo" />
         </div>
         <div className="title">
           <h1>로그인</h1>

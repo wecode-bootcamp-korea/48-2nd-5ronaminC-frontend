@@ -27,7 +27,7 @@ const SignUp = () => {
 
   const signup = () => {
     console.log(signupUserInfo);
-    fetch('http://10.58.52.71:3000/users/signup', {
+    fetch('http://10.58.52.242:3000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -63,10 +63,7 @@ const SignUp = () => {
     <div className="signUpMain">
       <div className="signUpMainLeft">
         <div className="logo">
-          <img
-            src="https://kr.accounts.ikea.com/resources/static/logo.svg"
-            alt="5KEA logo"
-          />
+          <img src="/images/5KEA-logo.jpg" alt="5KEA logo" />
         </div>
         <div className="title">
           <h1>5KEA FAMILY 회원가입</h1>
