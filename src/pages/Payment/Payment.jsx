@@ -7,7 +7,7 @@ const Payment = () => {
   const [paymentData, setPaymentData] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.56.242:3000/orders/information', {
+    fetch('http://10.58.52.242:3000/orders/information', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

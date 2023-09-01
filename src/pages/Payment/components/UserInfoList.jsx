@@ -25,7 +25,7 @@ const UserInfoList = ({ userInfoData }) => {
   console.log(arrsubtotalPrice);
 
   const CompletePayment = id => {
-    fetch('http://10.58.56.242:3000/orders/payment', {
+    fetch('http://10.58.52.242:3000/orders/payment', {
       method: 'Post',
       headers: {
         authorization: localStorage.getItem('TOKEN'),
@@ -42,6 +42,7 @@ const UserInfoList = ({ userInfoData }) => {
       }),
     })
       .then(res => {
+        console.log(res);
         if (res.message === '결제 완료') {
           alert('결제 완료');
         } else if (res.message === '잔액 부족') {

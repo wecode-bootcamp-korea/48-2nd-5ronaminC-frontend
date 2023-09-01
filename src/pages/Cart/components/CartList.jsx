@@ -3,7 +3,7 @@ import './CartList.scss';
 
 const CartList = ({ cartListData, getCart }) => {
   const cartDeleting = item => {
-    fetch(`http://10.58.56.242:3000/carts/${item}`, {
+    fetch(`http://10.58.52.242:3000/carts/${item}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

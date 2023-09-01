@@ -7,7 +7,7 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
 
   const getCart = () => {
-    fetch('http://10.58.56.242:3000/carts', {
+    fetch('http://10.58.52.242:3000/carts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
